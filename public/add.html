@@ -15,21 +15,24 @@
     <h2 class="subtitle">A Shop Inventory Management System</h2>
 
     <div>
-        <form action="adding">
-            <label for="name"><b>Product Name</b></label>
+        <form action="/adding">
+            <label for="name"><b>Product Name</b><span class="reqd">*</span></label>
             <input type="text" placeholder="Enter Product Name" name="name" required>
 
-            <label for="price"><b>Price</b></label>
-            <input type="text" placeholder="Enter Price" name="price" required>
+            <label for="barcode"><b>Barcode</b></label>
+            <input type="number" placeholder="Enter Barcode Number" name="barcode">
 
-            <label for="quantity"><b>Quantity</b></label>
+            <label for="quantity"><b>Quantity</b><span class="reqd">*</span></label>
             <input type="text" placeholder="Enter Quantity" name="quantity" required>
 
-            <label for="description"><b>Description</b></label>
-            <input type="text" placeholder="Enter Description" name="description" required>
+            <label for="date"><b>Expiry Date</b><span class="reqd">*</span></label>
+            <input type="date" name="date" required>
 
-            <label for="area">Area</label>
-            <select id="area">
+            <label for="remove">Remove # days before<span class="reqd">*</span></label>
+            <input type="number" name="remby" required>
+
+            <label for="area">Area<span class="reqd">*</span></label>
+            <select id="area" name="area">
                 <option value="TillSnacks">Till Snacks</option>
                 <option value="LaneSeparator">Lane Separator</option>
                 <option value="Till2SnackWall">Till 2 Snack Wall</option>

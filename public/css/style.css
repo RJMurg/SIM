@@ -258,3 +258,8 @@ select{
     font-weight: 400;
     border: none;
 }
+
+.reqd{
+    color: var(--red);
+    font-weight: 600;
+}

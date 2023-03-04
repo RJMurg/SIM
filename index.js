@@ -18,18 +18,6 @@ const db = new Low(adapter)
 
 await db.read()
 
-// If db.json doesn't exist, db.data will be null
-// Use the code below to set default data
-db.data ||= { posts: [] }             // For Node >= 15.x
-
-// Create and query items using native JS API
-db.data.posts.push('hello world')
-const firstPost = db.data.posts[0]
-
-// Alternatively, you can also use this syntax if you prefer
-const { posts } = db.data
-posts.push('hello world')
-
 app.use(express.static('public'))
 app.get('/', function (req, res) {
     // This should send the index.html file found in public
@@ -39,6 +27,27 @@ app.get('/', function (req, res) {
 app.get('/add', function (req, res) {
     // This should send the index.html file found in public
     res.sendFile(join(__dirname, '/public/add.html'));
+})
+
+app.get('/adding', async function(req, res) {
+    let item = req.query.name;
+    let barcode = req.query.barcode;
+    let quantity = req.query.quantity;
+    let date = req.query.date;
+    let remby = req.query.remby;
+    let area = req.query.area;
+
+    const curDate = new Date();
+    let newDate = curDate.getFullYear() + '-' + (curDate.getMonth() + 1).toString().padStart(2, "0") + '-' + curDate.getDate().toString().padStart(2, "0")
+
+    db.data ||= { item: { item: [barcode, quantity, date, remby, added, area]}}
+    db.data.item ||= {product: item, barcode: barcode, quantity: quantity, date: date, remby: remby, added: newDate, area: area}
+
+    await db.write()
+
+    // It should then redirect to the index page
+    res.redirect('/');
+
 })
 
 console.log('Listening on port ' + port + '...');
