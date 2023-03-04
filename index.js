@@ -176,5 +176,32 @@ app.get('/adding', async function(req, res) {
 
 })
 
+app.get('/remove', async function (req, res) {
+    db.data = {
+        TillSnacks:[],
+        LaneSeparator:[],
+        IceCreamFreezer:[],
+        SmallMinerals:[],
+        SpiderFridge:[],
+        BakeryItems:[],
+        RedValueBaskets:[],
+        BigCrisps:[],
+        ConsumablesAisle:[],
+        BiscuitsAisle:[],
+        BreadAisle:[],
+        EggsBakingAndCookingAisle:[],
+        OutsideAlcoholSnacks:[],
+        Alcohols:[],
+        DairyWall:[],
+        DairyWallFreezer:[],
+        BigMinerals:[],
+        PetFoodAndPolishProduceAisle:[]
+    }
+
+    await db.write()
+
+    res.redirect('/');
+})
+
 console.log('Listening on port ' + port + '...');
 app.listen(port)
