@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "A Shop Inventory Management system",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "working": "start powershell",
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +20,16 @@
   },
   "homepage": "https://github.com/RJMurg/SIMmer#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "express": "^4.18.2",
+    "lowdb": "^5.1.0",
+    "nodemon": "^2.0.21",
     "sqlite3": "^5.1.4"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules",
+      "db.json"
+    ]
   }
 }
