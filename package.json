@@ -1,0 +1,22 @@
+{
+  "name": "simmer",
+  "version": "1.0.0",
+  "description": "A Shop Inventory Management system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RJMurg/SIMmer.git"
+  },
+  "author": "Ruán",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RJMurg/SIMmer/issues"
+  },
+  "homepage": "https://github.com/RJMurg/SIMmer#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.4"
+  }
+}
