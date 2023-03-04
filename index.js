@@ -32,8 +32,14 @@ posts.push('hello world')
 
 app.use(express.static('public'))
 app.get('/', function (req, res) {
-    res.send('Hello World')
-  })
+    // This should send the index.html file found in public
+    res.sendFile(join(__dirname, '/public/index.html'));
+})
+
+app.get('/add', function (req, res) {
+    // This should send the index.html file found in public
+    res.sendFile(join(__dirname, '/public/add.html'));
+})
 
 console.log('Listening on port ' + port + '...');
 app.listen(port)

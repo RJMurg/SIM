@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMmer - Add Products</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
+</head>
+<body>
+    <h1 class="title">SIMmer</h1>
+    <h2 class="subtitle">A Shop Inventory Management System</h2>
+
+    <div>
+        <form action="adding">
+            <label for="name"><b>Product Name</b></label>
+            <input type="text" placeholder="Enter Product Name" name="name" required>
+
+            <label for="price"><b>Price</b></label>
+            <input type="text" placeholder="Enter Price" name="price" required>
+
+            <label for="quantity"><b>Quantity</b></label>
+            <input type="text" placeholder="Enter Quantity" name="quantity" required>
+
+            <label for="description"><b>Description</b></label>
+            <input type="text" placeholder="Enter Description" name="description" required>
+
+            <label for="area">Area</label>
+            <select id="area">
+                <option value="TillSnacks">Till Snacks</option>
+                <option value="LaneSeparator">Lane Separator</option>
+                <option value="Till2SnackWall">Till 2 Snack Wall</option>
+                <option value="IceCreamFreezer">Ice Cream Freezer</option>
+                <option value="SmallMinerals">Small Minerals</option>
+                <option value="SpiderFridge">Spider Fridge</option>
+                <option value="BakeryItems" >Bakery Items</option>
+                <option value="RedValueBaskets">'Red Value' Baskets</option>
+                <option value="BigCrisps">Big Crisps</option>
+                <option value="ConsumablesAisle">Consumables Aisle</option>
+                <option value="BiscuitsAisle">Biscuits Aisle</option>
+                <option value="BreadAisle">Bread Aisle</option>
+                <option value="EggsBakingAndCookingAisle">Eggs, Baking and Cooking Aisle</option>
+                <option value="OutsideAlcoholSnacks">Outside Alcohol Snacks</option>
+                <option value="Alcohols">Alcohol</option>
+                <option value="DairyWall">Dairy Wall</option>
+                <option value="DairyWallFreezer">Dairy Wall Freezer</option>
+                <option value="BigMinerals">Big Minerals</option>
+                <option value="PedFoodAndPolishProduceAisle">Pet Food and Polish Produce Aisle</option>
+            </select>
+
+            <button type="submit" class="addProduct">
+                <i class="fa fa-plus"></i>
+                Add Product
+            </button>
+        </form>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

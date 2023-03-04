@@ -84,18 +84,22 @@ button{
 
 .area1{
     background-color: var(--red);
+    transition: 0.25s ease-in-out;
 }
 
 .area2{
     background-color: var(--orange);
+    transition: 0.25s ease-in-out;
 }
 
 .area3{
     background-color: var(--blue);
+    transition: 0.25s ease-in-out;
 }
 
 .area4{
     background-color: var(--green);
+    transition: 0.25s ease-in-out;
 }
 
 .hamburger{
@@ -188,4 +192,69 @@ ul {
 
 .empty{
     display: none;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.add{
+    align-self: flex-end;
+    background-color: var(--moderatelyDarkGrey);
+}
+
+.add i{
+    color: var(--green);
+}
+
+input{
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    border-radius: 0.5rem;
+
+    color: var(--black);
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+}
+
+.addProduct{
+    background-color: var(--moderatelyDarkGrey);
+    transition: 0.25s ease-in-out;
+}
+
+button:hover{
+    background-color: var(--darkGrey);
+    transition: 0.25s ease-in-out;
+}
+
+.addProduct i{
+    color: var(--green);
+}
+
+label{
+    color: var(--white);
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+select{
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0;
+    border-radius: 0.5rem;
+
+    color: var(--black);
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
 }
