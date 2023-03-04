@@ -12,27 +12,64 @@
 </head>
 <body>
     <h1 class="title">SIMmer</h1>
-    <h2 class="subtitle">A Software Inventory Management System</h2>
+    <h2 class="subtitle">A Shop Inventory Management System</h2>
 
-    <span><button id="TillSnacks">Till Snacks</button></span>
-    <span><button id="LaneSeparator">Lane Separator</button></span>
-    <span><button id="Till2SnackWall">Till 2 Snack Wall</button></span>
-    <span><button id="IceCreamFreezer">Ice Cream Freezer</button></span>
-    <span><button id="SmallMinerals">Small Minerals</button></span>
-    <span><button id="SpiderFridge">Spider Fridge</button></span>
-    <span><button id="Alcohols">Alcohol</button></span>
-    <span><button id="OutsideAlcoholSnacks">Outside Alcohol Snacks</button></span>
-    <span><button id="BakeryItems">Bakery Items</button></span>
-    <span><button id="RedValueBaskets">'Red Value' Baskets</button></span>
-    <span><button id="BigCrisps">Big Crisps</button></span>
-    <span><button id="ConsumablesAisle">Consumables Aisle</button></span>
-    <span><button id="BiscuitsAisle">Biscuits Aisle</button></span>
-    <span><button id="BreadAisle">Bread Aisle</button></span>
-    <span><button id="EggsBakingAndCookingAisle">Eggs, Baking and Cooking Aisle</button></span>
-    <span><button id="DairyWall">Dairy Wall</button></span>
-    <span><button id="DairyWallFreezer">Dairy Wall Freezer</button></span>
-    <span><button id="BigMinerals">Big Minerals</button></span>
-    <span><button id="PedFoodAndPolishProduceAisle">Pet Food and Polish Produce Aisle</button></span>
+    <nav class="navbar" id="menu">
+        <div class="empty"></div>
+
+        <ul class="no-boot">
+            <li>
+                <h2 class="subtitle">Area 1 - Near Tills</h2>
+                <div class="menu">
+                    <button id="TillSnacks" class="area1">Till Snacks</button>
+                    <button id="LaneSeparator" class="area1">Lane Separator</button>
+                    <button id="Till2SnackWall" class="area1">Till 2 Snack Wall</button>
+                    <button id="IceCreamFreezer" class="area1">Ice Cream Freezer</button>
+                </div>
+            </li>
+
+            <li>
+                <h2 class="subtitle">Area 2 - Opposite Tills</h2>
+                <div class="menu">
+                    <button id="SmallMinerals" class="area2">Small Minerals</button>
+                    <button id="SpiderFridge" class="area2">Spider Fridge</button>
+                    <button id="BakeryItems" class="area2">Bakery Items</button>
+                    <button id="RedValueBaskets" class="area2">'Red Value' Baskets</button>
+                </div>
+            </li>
+
+            <li>
+                <h2 class="subtitle">Area 3 - Main Aisles</h2>
+                <div class="menu">
+                    <button id="BigCrisps" class="area3">Big Crisps</button>
+                    <button id="ConsumablesAisle" class="area3">Consumables Aisle</button>
+                    <button id="BiscuitsAisle" class="area3">Biscuits Aisle</button>
+                    <button id="BreadAisle" class="area3">Bread Aisle</button>
+                    <button id="EggsBakingAndCookingAisle" class="area3">Eggs, Baking and Cooking Aisle</button>
+                </div>
+            </li>
+
+            <li>
+                <h2 class="subtitle">Area 4 - Alcohol and Other</h2>
+                <div class="menu">
+                    <button id="OutsideAlcoholSnacks" class="area4">Outside Alcohol Snacks</button>
+                    <button id="Alcohols" class="area4">Alcohol</button>
+                    <button id="DairyWall" class="area4">Dairy Wall</button>
+                    <button id="DairyWallFreezer" class="area4">Dairy Wall Freezer</button>
+                    <button id="BigMinerals" class="area4">Big Minerals</button>
+                    <button id="PedFoodAndPolishProduceAisle" class="area4">Pet Food and Polish Produce Aisle</button>
+                </div>
+            </li>
+        </ul>
+
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <div class="empty"></div>
+    </nav>
 
     <div id="TillSnacks" class="hidden">
         <h3>Till Snacks</h3>
@@ -130,5 +167,6 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 </html>

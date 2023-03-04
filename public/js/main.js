@@ -11,6 +11,11 @@ for (var i = 0; i < buttons.length; i++) {
         // Get all the divs
         var divs = document.getElementsByTagName("div");
 
+        // Remove divs with the class 'menu' from the array
+        divs = Array.from(divs).filter(function(div) {
+            return !div.classList.contains("menu");
+        });
+
         // Loop through the divs
         for (var i = 0; i < divs.length; i++) {
             // Get the ID of the div
