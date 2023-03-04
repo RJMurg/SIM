@@ -1,5 +1,8 @@
-# SIMmer
-## A Shop Inventory Managment system.
+# SIMmer - Legacy
+## The legacy Shop Inventory Managment system.
+
+### Warning
+The Legacy branch of SIMmer is unsupported and provided as-is.
 
 SIMmer was created while working at a convenience shop. We had a book used to keep track of product expiry dates, but it was a pain to use. SIMmer was created to make the process of keeping track of product expiry dates easier.
 
