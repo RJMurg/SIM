@@ -1,7 +1,7 @@
 # SIM
 ## A Shop Inventory Managment system.
 
-SIM was created while working at a convenience shop. We had a book used to keep track of product expiry dates, but it was a pain to use. SIM was created to make the process of keeping track of product expiry dates easier.
+SIM was created while I was working at a corner shop. I wrote it to make identifying and pulling near-dated or out-of-date stock easier. The homepage provides an at-a-glance list of products that need to be removed.
 
 SIM is a Node app using LowDB, ETA and Express to create a simple web app that can be used to keep track of product expiry dates.
 
