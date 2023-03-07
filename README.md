@@ -1,9 +1,9 @@
-# SIMmer
+# SIM
 ## A Shop Inventory Managment system.
 
-SIMmer was created while working at a convenience shop. We had a book used to keep track of product expiry dates, but it was a pain to use. SIMmer was created to make the process of keeping track of product expiry dates easier.
+SIM was created while working at a convenience shop. We had a book used to keep track of product expiry dates, but it was a pain to use. SIM was created to make the process of keeping track of product expiry dates easier.
 
-SIMmer is a Node app using LowDB, ETA and Express to create a simple web app that can be used to keep track of product expiry dates.
+SIM is a Node app using LowDB, ETA and Express to create a simple web app that can be used to keep track of product expiry dates.
 
 ### Requirements
 - Node.js
