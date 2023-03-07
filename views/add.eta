@@ -19,11 +19,8 @@
             <label for="name"><b>Product Name</b><span class="reqd">*</span></label>
             <input type="text" placeholder="Enter Product Name" name="name" required>
 
-            <label for="barcode"><b>Barcode</b></label>
-            <input type="number" placeholder="Enter Barcode Number" name="barcode">
-
             <label for="quantity"><b>Quantity</b><span class="reqd">*</span></label>
-            <input type="text" placeholder="Enter Quantity" name="quantity" required>
+            <input type="number" placeholder="Enter Quantity" name="quantity" required>
 
             <label for="date"><b>Expiry Date</b><span class="reqd">*</span></label>
             <input type="date" name="date" required>
