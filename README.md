@@ -16,6 +16,7 @@ SIM is a Node app using LowDB, ETA and Express to create a simple web app that c
 
 ## Usage
 When you want to add a product to the expiration database, press the 'Add New' button on the homepage and fill out the relevant details.
+When you have removed the item from the shelves, press the relevant removal button.
 
 ## To-Do
 ### V1.1.X
