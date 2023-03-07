@@ -1,5 +1,5 @@
 {
-  "name": "simmer",
+  "name": "sim",
   "version": "1.0.0",
   "description": "A Shop Inventory Management system",
   "main": "index.js",
@@ -25,7 +25,8 @@
     "express": "^4.18.2",
     "lowdb": "^5.1.0",
     "nodemon": "^2.0.21",
-    "sqlite3": "^5.1.4"
+    "sqlite3": "^5.1.4",
+    "uuid": "^9.0.0"
   },
   "nodemonConfig": {
     "ignore": [
