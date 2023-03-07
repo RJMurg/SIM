@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import * as Eta from 'eta';
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express()
 const port = 3000
@@ -45,7 +46,7 @@ db.data ||= {
 app.use(express.static('public'))
 app.get('/', async function (req, res) {
     let toSend = db.data;
-    let finalMessage = "";
+    let finalMessage = "<table>";
 
     let todaysDate = new Date();
     todaysDate = todaysDate.toISOString().slice(0,10);
@@ -53,9 +54,7 @@ app.get('/', async function (req, res) {
 
     for(let i = 0; i < Object.keys(toSend).length; i++){
         for(let j = 0; j < Object.values(toSend)[i].length; j++){
-            let barcode = "";
             let outOfDate = false;
-            // console.log(Object.values(toSend)[i][j]);
 
             let removalDate = Object.values(toSend)[i][j].product.expiry
             removalDate = removalDate.split('-');
@@ -65,10 +64,14 @@ app.get('/', async function (req, res) {
                 removalDate[k] = parseInt(removalDate[k])
                 dateCheck[k] = parseInt(dateCheck[k])
 
-                if(removalDate[k] <= dateCheck[k]){
-                    if(outOfDate == false){
-                        outOfDate = true;
-                    }
+                if(removalDate[0] < dateCheck[0]){
+                    outOfDate = true;
+                }
+                else if(removalDate[1] < dateCheck[1]){
+                    outOfDate = true;
+                }
+                else if(removalDate[2] <= dateCheck[2]){
+                    outOfDate = true;
                 }
             }
 
@@ -76,26 +79,22 @@ app.get('/', async function (req, res) {
                 // Split the JSON nested object title from camel case to normal text
                 let area = Object.keys(toSend)[i].replace(/([A-Z])/g, ' $1').trim();
 
-                if(Object.values(toSend)[i][j].product.barcode.length > 0){
-                    barcode = "(" + Object.values(toSend)[i][j].product.barcode + ") ";
-                }
-                else{
-                    barcode = "";
-                }
-
                 finalMessage = finalMessage
+                + "<tr><td>"
                 + Object.values(toSend)[i][j].product.quantity
                 + "x " + Object.values(toSend)[i][j].product.name
-                + " found in " + area + " " + barcode + "to be pulled "
-                + Object.values(toSend)[i][j].product.remby + " days before " + Object.values(toSend)[i][j].product.expiry + "."
+                + " found in " + area + " to be removed "
+                + [...removalDate].reverse().join('/') + "."
+                + "</td><td>"
+                + '<form action="/remove"><input type="hidden" name="id" value="' + Object.values(toSend)[i][j].product.id + '"><button class="removebutton"><i class="fa fa-trash"></i>Remove</button></form></td></tr>'
                 finalMessage = finalMessage + "<br><br>";
             }
         }
     }
 
-    let parsedSend = JSON.stringify(toSend);
+    finalMessage = finalMessage + "</table>";
 
-    //console.log(parsedSend)
+    let parsedSend = JSON.stringify(toSend);
 
     res.render('index', { data: finalMessage})
 })
@@ -106,69 +105,12 @@ app.get('/add', function (req, res) {
 
 app.get('/adding', async function(req, res) {
     let item = req.query.name;
-    let barcode = req.query.barcode;
     let quantity = req.query.quantity;
     let date = req.query.date;
     let remby = req.query.remby;
     let area = req.query.area;
 
-    if(area == "TillSnacks"){
-        db.data.TillSnacks.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "LaneSeparator"){
-        db.data.LaneSeparator.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "Till2SnackWall"){
-        db.data.Till2SnackWall.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "IceCreamFreezer"){
-        db.data.IceCreamFreezer.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "SmallMinerals"){
-        db.data.SmallMinerals.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "SpiderFridge"){
-        db.data.SpiderFridge.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "BakeryItems"){
-        db.data.BakeryItems.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if (area == "RedValueBaskets"){
-        db.data.RedValueBaskets.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if (area == "BigCrisps"){
-        db.data.BigCrisps.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "ConsumablesAisle"){
-        db.data.ConsumablesAisle.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "BiscuitsAisle"){
-        db.data.BiscuitsAisle.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "BreadAisle"){
-        db.data.BreadAisle.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "EggsBakingAndCookingAisle"){
-        db.data.EggsBakingAndCookingAisle.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "OutsideAlcoholSnacks"){
-        db.data.OutsideAlcoholSnacks.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "Alcohols"){
-        db.data.Alcohols.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});	
-    }
-    else if(area == "DairyWall"){
-        db.data.DairyWall.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "DairyWallFreezer"){
-        db.data.DairyWallFreezer.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "BigMinerals"){
-        db.data.BigMinerals.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
-    else if(area == "PetFoodAndPolishProduceAisle"){
-        db.data.PetFoodAndPolishProduceAisle.push({product:{name:item, barcode: barcode, quantity: quantity, expiry: date, remby: remby}});
-    }
+    db.data[area].push({product:{name:item, quantity: quantity, expiry: date, remby: remby, id: uuidv4()}});
 
     await db.write()
 
@@ -177,25 +119,15 @@ app.get('/adding', async function(req, res) {
 })
 
 app.get('/remove', async function (req, res) {
-    db.data = {
-        TillSnacks:[],
-        LaneSeparator:[],
-        IceCreamFreezer:[],
-        SmallMinerals:[],
-        SpiderFridge:[],
-        BakeryItems:[],
-        RedValueBaskets:[],
-        BigCrisps:[],
-        ConsumablesAisle:[],
-        BiscuitsAisle:[],
-        BreadAisle:[],
-        EggsBakingAndCookingAisle:[],
-        OutsideAlcoholSnacks:[],
-        Alcohols:[],
-        DairyWall:[],
-        DairyWallFreezer:[],
-        BigMinerals:[],
-        PetFoodAndPolishProduceAisle:[]
+
+    let id = req.query.id;
+
+    for(let i = 0; i < Object.keys(db.data).length; i++){
+        for(let j = 0; j < Object.values(db.data)[i].length; j++){
+            if(Object.values(db.data)[i][j].product.id == id){
+                Object.values(db.data)[i].splice(j, 1);
+            }
+        }
     }
 
     await db.write()
