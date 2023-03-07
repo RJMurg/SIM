@@ -26,15 +26,7 @@
             <div id="spekl" class="spekl">
                 <h1 class="title">Out of Date!</h1>
                 <h2 class="subtitle">Remove the following items from the shop floor:</h2>
-                <p id="checker"><%~ it.data%></p>
-
-                <h2 class="warning">Only press this when you have removed everything!</h2>
-                <form action="/remove">
-                    <button class="removebutton">
-                        <i class="fa fa-trash"></i>
-                        Remove
-                    </button>
-                </form>
+                <div id="data" class="spekl"><%~ it.data%></div>
             </div>
         </div>
     </div>
@@ -122,6 +114,8 @@
             justify-content: center;
             height: 100%;
             width: 100%;
+            padding = 0;
+            margin = 0;
         }
 
         .add{
@@ -129,14 +123,19 @@
             background-color: var(--moderatelyDarkGrey);
         }
 
+        i{
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
         .add i{
             color: var(--green);
         }
 
         input{
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            margin-left: 0;
+            padding: 0;
+            margin: 0;
             border-radius: 0.5rem;
 
             color: var(--black);
@@ -224,7 +223,7 @@
     </style>
 
     <script>
-        if(document.getElementById('checker').innerText.length == 0){
+        if(document.getElementById('data').innerText.length == 0){
             document.getElementById('spekl').classList.add('hidden');
             document.getElementById('nood').classList.add('title');
             document.getElementById('nood').classList.remove('hidden');
