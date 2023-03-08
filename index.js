@@ -16,11 +16,16 @@ app.set("views", join(__dirname, '/views'))
 app.set("view cache", true)
 app.set("view engine", "eta")
 
-const file = join(__dirname, "/db.json");
-const adapter = new JSONFile(file)
+const stock = join(__dirname, "/db.json");
+const adapter = new JSONFile(stock)
 const db = new Low(adapter)
 
+const users = join(__dirname, "/users.json");
+const userAdapter = new JSONFile(users)
+const userDb = new Low(userAdapter)
+
 await db.read()
+await userDb.read()
 
 db.data ||= {
     TillSnacks:[],
@@ -42,6 +47,13 @@ db.data ||= {
     BigMinerals:[],
     PetFoodAndPolishProduceAisle:[]
 }
+
+let adminCookie = uuidv4();
+
+userDb.data ||= {
+    users:[],
+    active: false
+}   
 
 app.use(express.static('public'))
 app.get('/', async function (req, res) {
@@ -136,9 +148,37 @@ app.get('/remove', async function (req, res) {
 })
 
 app.get('/login', async function(req, res) {
-    let isAdmin = req.query.admin;
-    
     res.render('login')
+})
+
+app.get('/logging', async function(req, res) {
+    let pwd = req.query.pwd;
+    let failure = false;
+
+    for(let i = 0; i < userDb.data.users.length; i++){
+        if(userDb.data.users[i].password == pwd){
+            let send = "/admin?admin=" + adminCookie;
+            res.redirect(send);
+        }
+        
+        if(i == userDb.data.users.length - 1){
+            failure = true;
+        }
+    }
+
+    if(failure == true){
+        res.redirect('/admin')
+    }
+})
+
+app.get('/admin', async function(req, res) {
+    
+    if(req.query.admin == adminCookie){
+        res.render('admin')
+    }
+    else{
+        res.render('failure')
+    }
 })
 
 console.log('Listening on port ' + port + '...');

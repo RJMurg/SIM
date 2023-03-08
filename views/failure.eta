@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM</title>
+    <title>SIM - LOGIN FAIL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
@@ -13,43 +13,17 @@
     <h1 class="title">SIM</h1>
     <h2 class="subtitle">A Shop Inventory Management System</h2>
 
-    <table>
-        <tr>
-            <td>
-                <form action="/add">
-                    <button class="add">
-                        <i class="fa fa-plus"></i>
-                        Add New
-                    </button>
-                </form>
-            </td>
-            <td>
-                <form action="/employee">
-                    <button class="add">
-                        <i class="fa fa-user"></i>
-                        Employee Login
-                    </button>
-                </form>
-            </td>
-            <td>
-                <form action="/login">
-                    <button class="add">
-                        <i class="fa fa-shield"></i>
-                        Admin Login
-                    </button>
-                </form>
-            </td>
-        </tr>
-    </table>
-
-    <div class="remove">
+    <div class="failure">
         <div class="remint">
-            <h1 id="nood" class="hidden">Nothing is out of date today.</h1>
-            <div id="spekl" class="spekl">
-                <h1 class="title">Out of Date!</h1>
-                <h2 class="subtitle">Remove the following items from the shop floor:</h2>
-                <div id="data" class="spekl"><%~ it.data%></div>
-            </div>
+            <h1 id="title">Login failed.</h1>
+            <p>Click the button below to try again</p>
+
+            <form action='/login'>
+                <button class="add">
+                    <i class="fa fa-arrow-left"></i>
+                    Try Again
+                </button>
+            </form>
         </div>
     </div>
 
@@ -211,9 +185,9 @@
             font-weight: 600;
         }
 
-        .remove{
+        .failure{
             align-self: center;
-            background-color: var(--yellow);
+            background-color: var(--red);
         }
 
         .remint{
@@ -252,14 +226,6 @@
             align-self: center;
         }
     </style>
-
-    <script>
-        if(document.getElementById('data').innerText.length == 0){
-            document.getElementById('spekl').classList.add('hidden');
-            document.getElementById('nood').classList.add('title');
-            document.getElementById('nood').classList.remove('hidden');
-        }
-    </script>
 
 </body>
 </html>

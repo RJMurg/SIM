@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "name": "admin",
+      "password": "tomlo"
+    },
+    {
+      "name": "ruan"
+    }
+  ],
+  "active": true
+}
