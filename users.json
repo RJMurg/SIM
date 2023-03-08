@@ -2,17 +2,17 @@
   "users": [
     {
       "name": "admin",
-      "position": 0,
-      "canEdit": true,
-      "isAdmin": true,
+      "position": "0",
+      "canEdit": "true",
+      "isAdmin": "true",
       "id": "cead71b9-6ded-4dc8-a9da-f31bb73d4624"
     },
     {
       "name": "Ruan",
-      "position": 2,
-      "canEdit": true,
-      "isAdmin": true,
-      "id": "21f8ab1e-f466-449d-a218-0105b2662e91"
+      "position": "2",
+      "canEdit": "true",
+      "isAdmin": "false",
+      "id": "357d7346-80e8-4f56-a1e3-1154eb34a54c"
     }
   ],
   "active": true

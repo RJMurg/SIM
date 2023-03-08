@@ -4,43 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM - USERS</title>
+    <title>SIM - NEW USER</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
     <h1 class="title">SIM ADMIN</h1>
-    <h2 class="subtitle">User Panel</h2>
+    <h2 class="subtitle">New User</h2>
 
-    <table class="override">
-        <tr>
-            <td>
-                <form action="/admin">
-                    <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
-                </form>
-            </td>
-
-            <td>
-                <form action="/addUser">
-                        <button class="add" type="submit"><i class="fa fa-plus"></i>Add User</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+    <form action="/users">
+        <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
+    </form>
 
     <div class="userbox">
 
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Can Edit</th>
-                <th>Is Admin</th>
-                <th>Actions</th>
-            </tr>
-            <%~ it.data%>
-        </table>
+        <form action="/addingUser">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Can Edit Stock</th>
+                    <th>Is Administrator</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="name" id="name">
+                    </td>
+
+                    <td>
+                        <select name="position">
+                            <option value="0">Manager</option>
+                            <option value="1">Supervisor</option>
+                            <option value="2" selected="selected">Sales Assistant</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="canEdit">
+                            <option value="true">True</option>
+                            <option value="false" selected="selected">False</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="isAdmin" id="isAdmin">
+                            <option value="true">False</option>
+                            <option value="false" selected="selected">False</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="add" type="submit"><i class="fa fa-plus"></i>Add</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 
     <style>
@@ -159,7 +179,6 @@
 
         select{
             padding: 0.5rem;
-            margin-bottom: 0.5rem;
             margin-left: 0;
             border-radius: 0.5rem;
 
@@ -168,6 +187,24 @@
             font-size: 1rem;
             font-weight: 400;
             border: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        input{
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            margin: 0;
+            border-radius: 0.5rem;
+
+            color: var(--black);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+            height: 100%;
+            width: 95%;
         }
 
         .removebutton{
@@ -182,46 +219,19 @@
         }
 
         table{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
+            border-style: none;
             border-collapse: collapse;
             width: 100%;
             table-layout: fixed;
         }
 
         th{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
             padding: 0.5rem;
             text-align: left;
         }
 
         td{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
             padding: 0.5rem;
-            text-align: left;
-        }
-
-        .override{
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border: none;
-        }
-
-        .override td{
-            border: none;
-            padding: 0;
-            margin: 0;
         }
 
     </style>

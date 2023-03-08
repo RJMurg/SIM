@@ -207,15 +207,144 @@ app.get('/users', async function(req, res) {
         + userDb.data.users[i].isAdmin
         + "</td><td>"
         + '<form action="/editUser"><input type="hidden" name="id" value="' + userDb.data.users[i].id + '"><button class="add"><i class="fa fa-user"></i>View and Edit User</button></form></td></tr>'
-
-        console.log(userData)
     }
 
     res.render('admin/users', {data: userData})
 })
 
+app.get('/editUser', async function(req, res) {
+    let id = req.query.id;
+    let name = "";
+    let position = 0;
+    let manager = "";
+    let supervisor = "";
+    let salesAssistant = "";
+    let canEdit = false;
+    let editTrue = "";
+    let editFalse = "";
+    let isAdmin = false;
+    let adminTrue = "";
+    let adminFalse = "";
+
+    for(let i = 0; i < userDb.data.users.length; i++){
+        if(userDb.data.users[i].id == id){
+            name = userDb.data.users[i].name;
+            position = userDb.data.users[i].position;
+            canEdit = userDb.data.users[i].canEdit;
+            isAdmin = userDb.data.users[i].isAdmin;
+
+            if(position == 0){
+                manager = 'selected="selected"';
+            }
+            else if(position == 1){
+                supervisor = 'selected="selected"';
+            }
+            else if(position == 2){
+                salesAssistant = 'selected="selected"';
+            }
+
+            if(canEdit == true){
+                editTrue = 'selected="selected"';
+            }
+            else{
+                editFalse = 'selected="selected"';
+            }
+
+            if(isAdmin == true){
+                adminTrue = 'selected="selected"';
+            }
+            else{
+                adminFalse = 'selected="selected"';
+            }
+
+            break;
+        }
+    }
+
+    res.render('admin/editUser', {id: id, userName: name, manager: manager, supervisor: supervisor, salesAssistant: salesAssistant, editTrue: editTrue, editFalse: editFalse, adminTrue: adminTrue, adminFalse: adminFalse})
+})
+
+app.get('/editing', async function(req, res) {
+    let id = req.query.id;
+    let name = req.query.name;
+    let position = req.query.position;
+    let canEdit = req.query.canEdit;
+    let isAdmin = req.query.isAdmin;
+    let action = req.query.action;
+
+    for(let i = 0; i < userDb.data.users.length; i++){
+        if(userDb.data.users[i].id == id){
+            userDb.data.users[i].name = name;
+            userDb.data.users[i].position = position;
+            userDb.data.users[i].canEdit = canEdit;
+            userDb.data.users[i].isAdmin = isAdmin;
+
+            if(action == 1){
+                res.redirect('/verifyDelete?id' + id)
+            }
+
+            await userDb.write();
+
+            res.redirect('/users');
+        }
+    }
+})
+
+app.get('/verifyDelete', async function(req, res) {
+    let id = req.query.id;
+    let userName = "";
+
+    for(let i = 0; i < userDb.data.users.length; i++){
+        if(userDb.data.users[i].id == id){
+            userName = userDb.data.users[i].name;
+            break;
+        }
+    }
+
+    console.log(userName)
+    res.render('admin/verifyDelete', {userName: userName, id: id})
+})
+
+app.get('/deleteUser', async function(req, res) {
+    let id = req.query.id;
+
+    for(let i = 0; i < userDb.data.users.length; i++){
+        if(userDb.data.users[i].id == id){
+            userDb.data.users.splice(i, 1);
+            break;
+        }
+    }
+
+    await userDb.write();
+
+    res.redirect('/users');
+})
+
 app.get('/addUser', async function(req, res) {
     res.render('admin/addUser')
+})
+
+app.get('/addingUser', async function(req, res) {
+    let name = req.query.name;
+    let position = req.query.position;
+    let canEdit = req.query.canEdit;
+    let isAdmin = req.query.isAdmin;
+    let id = uuidv4();
+
+    let newUser = {
+        name: name,
+        position: position,
+        canEdit: canEdit,
+        isAdmin: isAdmin,
+        id: id
+    }
+
+    userDb.data.users.push(newUser);
+
+    await userDb.write();
+
+    res.redirect('/users');
+
 })
 
 console.log('Listening on port ' + port + '...');

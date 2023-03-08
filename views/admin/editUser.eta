@@ -4,63 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM - USERS</title>
+    <title>SIM - EDIT <%~ it.userName%></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
     <h1 class="title">SIM ADMIN</h1>
-    <h2 class="subtitle">User Panel</h2>
+    <h2 class="subtitle">Edit User</h2>
 
-    <form action="/admin">
+    <form action="/users">
         <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
     </form>
 
     <div class="userbox">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Can Edit</th>
-                <th>Is Admin</th>
-                <th>Actions</th>
-            </tr>
-            <form>
+        <h1 class="title">Viewing <%~ it.userName%></h1>
+
+        <form action="/editing">
+            <table>
                 <tr>
-                    <input type="hidden" name="id" id="id" value="[id]">
-                    <td>Admin</td>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Can Edit Stock</th>
+                    <th>Is Administrator</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
                     <td>
-                        <select name="position" id="position">
-                            <option value="Yes">Manager</option> 
-                            <option value="2">Supervisor</option>
-                            <option value="3">Sales Assistant</option>
+                        <input type="hidden" name="id" value=<%~ it.id%>>
+                        <input type="text" name="name" id="name" value=<%~ it.userName%>>
+                    </td>
+
+                    <td>
+                        <select name="position">
+                            <option value="0" <%~ it.manager%>>Manager</option>
+                            <option value="1" <%~ it.supervisor%>>Supervisor</option>
+                            <option value="2" <%~ it.salesAssistant%>>Sales Assistant</option>
                         </select>
                     </td>
-                    <td>
-                        <input type="checkbox" name="canEdit" id="canEdit">
-                    </td>
-                    <td>
-                        <input type="checkbox" name="isAdmin" id="isAdmin">
-                    </td>
-                    <td>
-                        <form action="/removeuser">
-                            <button class="removebutton" type="submit" value="remove">
-                                <input type="hidden" name="action" id="action" value="remove">
-                                <i class="fa fa-trash"></i>
-                                Remove
-                            </button>
-                        </form>
 
-                        <button class="add" type="submit" value="update">
-                            <input type="hidden" name="action" id="action" value="edit">
-                            <i class="fa fa-pencil"></i>
-                            Update
-                        </button>
+                    <td>
+                        <select name="canEdit">
+                            <option value="true" <%~ it.editTrue%>>True</option>
+                            <option value="false" <%~ it.editFalse%>>False</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="isAdmin" id="isAdmin">
+                            <option value="true" <%~ it.adminTrue%>>False</option>
+                            <option value="false" <%~ it.adminFalse%>>False</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="action">
+                            <option value="0">None</option>
+                            <option value="1">Delete</option>
+                        </select>
                     </td>
                 </tr>
-            </form>
-        </table>
+                <tr>
+                    <td>
+                        <button class="add" type="submit"><i class="fa fa-floppy-o"></i>Save</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 
     <style>
@@ -179,7 +189,6 @@
 
         select{
             padding: 0.5rem;
-            margin-bottom: 0.5rem;
             margin-left: 0;
             border-radius: 0.5rem;
 
@@ -188,6 +197,24 @@
             font-size: 1rem;
             font-weight: 400;
             border: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        input{
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            margin: 0;
+            border-radius: 0.5rem;
+
+            color: var(--black);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+            height: 100%;
+            width: 95%;
         }
 
         .removebutton{
@@ -202,33 +229,19 @@
         }
 
         table{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
+            border-style: none;
             border-collapse: collapse;
             width: 100%;
             table-layout: fixed;
         }
 
         th{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
             padding: 0.5rem;
             text-align: left;
         }
 
         td{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
             padding: 0.5rem;
-            text-align: left;
         }
 
     </style>
