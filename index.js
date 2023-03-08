@@ -50,9 +50,15 @@ db.data ||= {
 }
 
 userDb.data ||= {
-    users:[],
-    active: false
-}   
+    users:[]
+}
+
+if(userDb.data.users.length == 0){
+    userDb.data.users.push({name: "admin", position: 0, canEdit: true, isAdmin: true,  password: "admin", id: uuidv4()})
+    await userDb.write()
+
+    console.log("No users found, creating admin user with password 'admin'.")
+}
 
 app.use(express.static('public'))
 app.get('/', async function (req, res) {
