@@ -1,9 +1,9 @@
-# SIMmer
+# SIM
 ## A Shop Inventory Managment system.
 
-SIMmer was created while working at a convenience shop. We had a book used to keep track of product expiry dates, but it was a pain to use. SIMmer was created to make the process of keeping track of product expiry dates easier.
+SIM was created while I was working at a corner shop. I wrote it to make identifying and pulling near-dated or out-of-date stock easier. The homepage provides an at-a-glance list of products that need to be removed.
 
-SIMmer is a Node app using LowDB, ETA and Express to create a simple web app that can be used to keep track of product expiry dates.
+SIM is a Node app using LowDB, ETA and Express to create a simple web app that can be used to keep track of product expiry dates.
 
 ### Requirements
 - Node.js
@@ -16,11 +16,16 @@ SIMmer is a Node app using LowDB, ETA and Express to create a simple web app tha
 
 ## Usage
 When you want to add a product to the expiration database, press the 'Add New' button on the homepage and fill out the relevant details.
+When you have removed the item from the shelves, press the relevant removal button.
 
-## To-DO
+## To-Do
+### V1.1.X
 - [ ] Add a way to edit products.
 - [ ] Add a way to delete products individually.
 - [ ] Add a way to view all products.
 - [ ] Add a way to view all products that are expiring soon.
 - [ ] Add a way for employees to state what products they are removing.
 - [ ] Add a removal reason.
+
+### V2.X.X
+- [ ] Svelte Re-Write
