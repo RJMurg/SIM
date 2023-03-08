@@ -135,5 +135,11 @@ app.get('/remove', async function (req, res) {
     res.redirect('/');
 })
 
+app.get('/login', async function(req, res) {
+    let isAdmin = req.query.admin;
+    
+    res.render('login')
+})
+
 console.log('Listening on port ' + port + '...');
 app.listen(port)

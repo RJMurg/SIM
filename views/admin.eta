@@ -4,44 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM</title>
+    <title>SIM - ADMIN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
-    <h1 class="title">SIM</h1>
+    <h1 class="title">SIMmer</h1>
     <h2 class="subtitle">A Shop Inventory Management System</h2>
 
-    <table>
-        <tr>
-            <td>
-                <form action="/add">
-                    <button class="add">
-                        <i class="fa fa-plus"></i>
-                        Add New
-                    </button>
-                </form>
-            </td>
-            <td>
-                <form action="/employee">
-                    <button class="add">
-                        <i class="fa fa-user"></i>
-                        Employee Login
-                    </button>
-                </form>
-            </td>
-            <td>
-                <form action="/login">
-                    <input type="hidden" name="admin" value="true">
-                    <button class="add">
-                        <i class="fa fa-shield"></i>
-                        Admin Login
-                    </button>
-                </form>
-            </td>
-        </tr>
-    </table>
+    <form action="/add">
+        <button class="add">
+            <i class="fa fa-plus"></i>
+            Add New
+        </button>
+    </form>
 
     <div class="remove">
         <div class="remint">
@@ -73,12 +50,7 @@
 
         body{
             height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
+            width: 99%;
             background-color: var(--black);
             color: var(--white);
             font-family: "IBM Plex Sans", sans-serif;
@@ -247,10 +219,6 @@
 
         .spekl{
             background-color: var(--moderatelyDarkGrey);
-        }
-
-        table{
-            align-self: center;
         }
     </style>
 
