@@ -4,8 +4,9 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
-import * as Eta from 'eta';
 import { v4 as uuidv4 } from 'uuid';
+import * as Eta from "eta"
+import cookieParser from 'cookie-parser';
 
 const app = express()
 const port = 3000
@@ -47,8 +48,6 @@ db.data ||= {
     BigMinerals:[],
     PetFoodAndPolishProduceAisle:[]
 }
-
-let adminCookie = uuidv4();
 
 userDb.data ||= {
     users:[],
@@ -157,8 +156,8 @@ app.get('/logging', async function(req, res) {
 
     for(let i = 0; i < userDb.data.users.length; i++){
         if(userDb.data.users[i].password == pwd){
-            let send = "/admin?admin=" + adminCookie;
-            res.redirect(send);
+            //res.cookie('admin', )
+            res.redirect('/admin');
             break;
         }
         
@@ -174,16 +173,49 @@ app.get('/logging', async function(req, res) {
 
 app.get('/admin', async function(req, res) {
     
-    if(req.query.admin == adminCookie){
-        res.render('admin')
-    }
-    else{
-        res.render('failure')
-    }
+    //if(req.query.admin == adminCookie){
+        res.render('admin/admin')
+    //}
+    //else{
+        //res.render('failure')
+    //}
 })
 
 app.get('/users', async function(req, res) {
-    res.render('users')
+    let userData = "";
+    let position = "";
+
+    for(let i = 0; i < userDb.data.users.length; i++){
+        if(userDb.data.users[i].position == 0){
+            position = "Manager";
+        }
+        else if(userDb.data.users[i].position == 1){
+            position = "Supervisor";
+        }
+        else if(userDb.data.users[i].position == 2){
+            position = "Sales Assistant";
+        }
+
+
+        userData = userData + "<tr><td>"
+        + userDb.data.users[i].name
+        + "</td><td>"
+        + position
+        + "</td><td>"
+        + userDb.data.users[i].canEdit
+        + "</td><td>"
+        + userDb.data.users[i].isAdmin
+        + "</td><td>"
+        + '<form action="/editUser"><input type="hidden" name="id" value="' + userDb.data.users[i].id + '"><button class="add"><i class="fa fa-user"></i>View and Edit User</button></form></td></tr>'
+
+        console.log(userData)
+    }
+
+    res.render('admin/users', {data: userData})
+})
+
+app.get('/addUser', async function(req, res) {
+    res.render('admin/addUser')
 })
 
 console.log('Listening on port ' + port + '...');

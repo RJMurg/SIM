@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1 class="title">SIM ADMIN</h1>
-    <h2 class="subtitle">A Shop Inventory Management System</h2>
+    <h2 class="subtitle">Management Panel</h2>
 
     <table>
         <tr>
@@ -64,6 +64,8 @@
         body{
             height: 100%;
             width: 99%;
+            display: flex;
+            flex-direction: column;
             background-color: var(--black);
             color: var(--white);
             font-family: "IBM Plex Sans", sans-serif;
@@ -89,10 +91,6 @@
             text-align: center;
             font-style: italic;
             margin-bottom: 1rem;
-        }
-
-        .hidden{
-            display: none !important;
         }
 
         div{
@@ -146,23 +144,6 @@
             color: var(--green);
         }
 
-        input{
-            padding: 0;
-            margin: 0;
-            border-radius: 0.5rem;
-
-            color: var(--black);
-            font-family: "IBM Plex Sans", sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-            border: none;
-        }
-
-        .addProduct{
-            background-color: var(--moderatelyDarkGrey);
-            transition: 0.25s ease-in-out;
-        }
-
         button:hover{
             background-color: var(--darkGrey);
             transition: 0.25s ease-in-out;
@@ -197,28 +178,6 @@
             font-weight: 600;
         }
 
-        .remove{
-            align-self: center;
-            background-color: var(--yellow);
-        }
-
-        .remint{
-            background-color: var(--moderatelyDarkGrey);
-            width: 95%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 0.5rem;
-            box-shadow: 0 0 0.5rem 0.125rem inset var(--black);
-        }
-
-        .remint h1{
-            text-shadow: 2.5px 2.5px 0 var(--black);
-        }
-
         .removebutton{
             align-self: center;
             background-color: var(--red);
@@ -230,18 +189,23 @@
             padding: 0px;
         }
 
-        .spekl{
-            background-color: var(--moderatelyDarkGrey);
+        table{
+            width: 50%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            align-self: center;
+            border-collapse: collapse;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        td{
+            padding-left: 15px;
+            padding-right: 15px;
         }
     </style>
-
-    <script>
-        if(document.getElementById('data').innerText.length == 0){
-            document.getElementById('spekl').classList.add('hidden');
-            document.getElementById('nood').classList.add('title');
-            document.getElementById('nood').classList.remove('hidden');
-        }
-    </script>
 
 </body>
 </html>
