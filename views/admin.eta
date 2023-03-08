@@ -10,26 +10,39 @@
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
-    <h1 class="title">SIMmer</h1>
+    <h1 class="title">SIM ADMIN</h1>
     <h2 class="subtitle">A Shop Inventory Management System</h2>
 
-    <form action="/add">
-        <button class="add">
-            <i class="fa fa-plus"></i>
-            Add New
-        </button>
-    </form>
+    <table>
+        <tr>
+            <td>
+                <form action="/users">
+                    <button class="add" type="submit">
+                        <i class="fa fa-group"></i>
+                        View and Edit Employees
+                    </button>
+                </form>
+            </td>
 
-    <div class="remove">
-        <div class="remint">
-            <h1 id="nood" class="hidden">Nothing is out of date today.</h1>
-            <div id="spekl" class="spekl">
-                <h1 class="title">Out of Date!</h1>
-                <h2 class="subtitle">Remove the following items from the shop floor:</h2>
-                <div id="data" class="spekl"><%~ it.data%></div>
-            </div>
-        </div>
-    </div>
+            <td>
+                <form action="/logs">
+                    <button class="add" type="submit">
+                        <i class="fa fa-file"></i>
+                        View Stock Logs
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form action="/database">
+                    <button class="add" type="submit">
+                        <i class="fa fa-pencil"></i>
+                        Edit Database
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
 
     <style>
         :root{

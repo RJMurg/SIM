@@ -159,6 +159,7 @@ app.get('/logging', async function(req, res) {
         if(userDb.data.users[i].password == pwd){
             let send = "/admin?admin=" + adminCookie;
             res.redirect(send);
+            break;
         }
         
         if(i == userDb.data.users.length - 1){
@@ -179,6 +180,10 @@ app.get('/admin', async function(req, res) {
     else{
         res.render('failure')
     }
+})
+
+app.get('/users', async function(req, res) {
+    res.render('users')
 })
 
 console.log('Listening on port ' + port + '...');
