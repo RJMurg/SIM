@@ -353,5 +353,38 @@ app.get('/addingUser', async function(req, res) {
 
 })
 
+app.get('/view', async function(req, res) {
+    let toSend = db.data
+    let finalMessage = ""
+
+    for(let i = 0; i < Object.keys(toSend).length; i++){
+        let area = Object.keys(toSend)[i].replace(/([A-Z])/g, ' $1').trim();
+
+        for(let j = 0; j < Object.values(toSend)[i].length; j++){
+            let removalDate = Object.values(toSend)[i][j].product.expiry
+            removalDate = removalDate.split('-');
+            removalDate[2] = (parseInt(removalDate[2]) - parseInt(Object.values(toSend)[i][j].product.remby)).toString().padStart(2, '0');
+
+            let expiryDate = Object.values(toSend)[i][j].product.expiry
+            expiryDate = expiryDate.split('-')
+
+            finalMessage = finalMessage
+            + "<tr><td>"
+            + Object.values(toSend)[i][j].product.name
+            + "</td><td>"
+            + Object.values(toSend)[i][j].product.quantity
+            + "</td><td>"
+            + [...expiryDate].reverse().join('/')
+            + "</td><td>"
+            + [...removalDate].reverse().join('/')
+            + "</td><td>"
+            + area
+            + "</td></tr>"
+        }
+    }
+
+    res.render('view.eta', {data: finalMessage})
+})
+
 console.log('Listening on port ' + port + '...');
 app.listen(port)
