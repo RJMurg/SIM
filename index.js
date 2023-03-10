@@ -103,7 +103,9 @@ app.get('/', async function (req, res) {
                 + " found in " + area + " to be removed "
                 + [...removalDate].reverse().join('/') + "."
                 + "</td><td>"
-                + '<form action="/remove"><input type="hidden" name="id" value="' + Object.values(toSend)[i][j].product.id + '"><button class="removebutton"><i class="fa fa-trash"></i>Remove</button></form></td></tr>'
+                + '<form action="/remove"><input type="hidden" name="id" value="'
+                + Object.values(toSend)[i][j].product.id
+                + '"><button class="removebutton"><i class="fa fa-trash"></i>Remove</button></form></td></tr>'
                 finalMessage = finalMessage + "<br><br>";
             }
         }
@@ -113,7 +115,7 @@ app.get('/', async function (req, res) {
 
     let parsedSend = JSON.stringify(toSend);
 
-    res.render('index', { data: finalMessage})
+    res.render('newdex', { data: finalMessage})
 })
 
 app.get('/add', function (req, res) {
