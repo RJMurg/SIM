@@ -1,0 +1,31 @@
+{
+  "TillSnacks": [
+    {
+      "product": {
+        "name": "Test Product",
+        "quantity": "2",
+        "expiry": "2023-03-11",
+        "remby": "2",
+        "id": "c1b589f0-91c5-4ee6-9b1e-259f7d5edc33",
+        "removed": "2023-03-11T21:59:43.254Z"
+      }
+    }
+  ],
+  "LaneSeparator": [],
+  "IceCreamFreezer": [],
+  "SmallMinerals": [],
+  "SpiderFridge": [],
+  "BakeryItems": [],
+  "RedValueBaskets": [],
+  "BigCrisps": [],
+  "ConsumablesAisle": [],
+  "BiscuitsAisle": [],
+  "BreadAisle": [],
+  "EggsBakingAndCookingAisle": [],
+  "OutsideAlcoholSnacks": [],
+  "Alcohols": [],
+  "DairyWall": [],
+  "DairyWallFreezer": [],
+  "BigMinerals": [],
+  "PetFoodAndPolishProduceAisle": []
+}
