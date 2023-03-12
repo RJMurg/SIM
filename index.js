@@ -166,7 +166,7 @@ app.get('/adding', async function(req, res) {
 
 app.get('/remove', async function (req, res) {
     let removedDate = new Date()
-    removedDate = removedDate.toISOString().slice(0,10);
+    removedDate = removedDate.toISOString().slice(0, 10);
 
     let id = req.query.id;
 
@@ -178,7 +178,6 @@ app.get('/remove', async function (req, res) {
                 let expiry = Object.values(db.data)[i][j].product.expiry
                 let remby = Object.values(db.data)[i][j].product.remby
                 let area = Object.keys(db.data)[i]
-                let removedDate = new Date()
 
                 removedDb.data[area].push({product:{name: item, quantity: quantity, expiry: expiry, remby: remby, id: id, removed: removedDate}});
 
@@ -443,6 +442,7 @@ app.get('/removedList', async function(req, res) {
             expiryDate = expiryDate.split('-')
 
             let removedDate = Object.values(toSend)[i][j].product.removed
+            removedDate = removedDate.split('-');
 
             finalMessage = finalMessage
             + "<tr><td>"
