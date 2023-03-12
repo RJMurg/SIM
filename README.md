@@ -21,11 +21,14 @@ When you have removed the item from the shelves, press the relevant removal butt
 ## To-Do
 ### V1.1.X
 - [ ] Add a way to edit products.
-- [ ] Add a way to delete products individually.
+- [X] Add a way to delete products individually.
 - [ ] Add a way to view all products.
 - [ ] Add a way to view all products that are expiring soon.
 - [ ] Add a way for employees to state what products they are removing.
+- [ ] Add a way to view all products that have been removed.
 - [ ] Add a removal reason.
-
-### V2.X.X
-- [ ] Svelte Re-Write
+- [X] Add an Admin Panel.
+- [X] Add a Users system.
+- [ ] Add a way to view all products that have been removed by a specific user.
+- [ ] Add Cookies, password hashing and other useful features.
+- [ ] Secure system (Stopping XSS, etc.)

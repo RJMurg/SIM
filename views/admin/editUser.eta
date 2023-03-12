@@ -4,64 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM</title>
+    <title>SIM - EDIT <%~ it.userName%></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
-    <h1 class="title">SIM</h1>
-    <h2 class="subtitle">A Shop Inventory Management System</h2>
+    <h1 class="title">SIM ADMIN</h1>
+    <h2 class="subtitle">Edit User</h2>
 
-    <table>
-        <tr>
-            <td>
-                <form action="/add">
-                    <button class="add">
-                        <i class="fa fa-plus"></i>
-                        Add New
-                    </button>
-                </form>
-            </td>
+    <form action="/users">
+        <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
+    </form>
 
-            <td>
-                <form action="/view">
-                    <button class="add">
-                            <i class="fa fa-list"></i>
-                            View All Products
-                    </button>
-                </form>
-            </td>
+    <div class="userbox">
+        <h1 class="title">Viewing <%~ it.userName%></h1>
 
-            <td>
-                <form action="/employee">
-                    <button class="add">
-                        <i class="fa fa-user"></i>
-                        Employee Login
-                    </button>
-                </form>
-            </td>
+        <form action="/editing">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Can Edit Stock</th>
+                    <th>Is Administrator</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden" name="id" value=<%~ it.id%>>
+                        <input type="text" name="name" id="name" value=<%~ it.userName%>>
+                    </td>
 
-            <td>
-                <form action="/login">
-                    <button class="add">
-                        <i class="fa fa-shield"></i>
-                        Admin Login
-                    </button>
-                </form>
-            </td>
-        </tr>
-    </table>
+                    <td>
+                        <select name="position">
+                            <option value="0" <%~ it.manager%>>Manager</option>
+                            <option value="1" <%~ it.supervisor%>>Supervisor</option>
+                            <option value="2" <%~ it.salesAssistant%>>Sales Assistant</option>
+                        </select>
+                    </td>
 
-    <div class="remove">
-        <div class="remint">
-            <h1 id="nood" class="hidden">Nothing is out of date today.</h1>
-            <div id="spekl" class="spekl">
-                <h1 class="title">Out of Date!</h1>
-                <h2 class="subtitle">Remove the following items from the shop floor:</h2>
-                <div id="data" class="spekl"><%~ it.data%></div>
-            </div>
-        </div>
+                    <td>
+                        <select name="canEdit">
+                            <option value="true" <%~ it.editTrue%>>True</option>
+                            <option value="false" <%~ it.editFalse%>>False</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="isAdmin" id="isAdmin">
+                            <option value="true" <%~ it.adminTrue%>>False</option>
+                            <option value="false" <%~ it.adminFalse%>>False</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="action">
+                            <option value="0">None</option>
+                            <option value="1">Delete</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="add" type="submit"><i class="fa fa-floppy-o"></i>Save</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 
     <style>
@@ -83,12 +92,7 @@
 
         body{
             height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
+            width: 99%;
             background-color: var(--black);
             color: var(--white);
             font-family: "IBM Plex Sans", sans-serif;
@@ -114,10 +118,6 @@
             text-align: center;
             font-style: italic;
             margin-bottom: 1rem;
-        }
-
-        .hidden{
-            display: none !important;
         }
 
         div{
@@ -152,8 +152,8 @@
             justify-content: center;
             height: 100%;
             width: 100%;
-            padding = 0;
-            margin = 0;
+            padding: 0;
+            margin: 0;
         }
 
         .add{
@@ -169,23 +169,6 @@
 
         .add i{
             color: var(--green);
-        }
-
-        input{
-            padding: 0;
-            margin: 0;
-            border-radius: 0.5rem;
-
-            color: var(--black);
-            font-family: "IBM Plex Sans", sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-            border: none;
-        }
-
-        .addProduct{
-            background-color: var(--moderatelyDarkGrey);
-            transition: 0.25s ease-in-out;
         }
 
         button:hover{
@@ -206,7 +189,6 @@
 
         select{
             padding: 0.5rem;
-            margin-bottom: 0.5rem;
             margin-left: 0;
             border-radius: 0.5rem;
 
@@ -215,33 +197,24 @@
             font-size: 1rem;
             font-weight: 400;
             border: none;
-        }
-
-        .reqd{
-            color: var(--red);
-            font-weight: 600;
-        }
-
-        .remove{
-            align-self: center;
-            background-color: var(--yellow);
-        }
-
-        .remint{
-            background-color: var(--moderatelyDarkGrey);
-            width: 95%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 0.5rem;
-            box-shadow: 0 0 0.5rem 0.125rem inset var(--black);
+            width: 100%;
         }
 
-        .remint h1{
-            text-shadow: 2.5px 2.5px 0 var(--black);
+        input{
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            margin: 0;
+            border-radius: 0.5rem;
+
+            color: var(--black);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+            height: 100%;
+            width: 95%;
         }
 
         .removebutton{
@@ -249,28 +222,29 @@
             background-color: var(--red);
         }
 
-        .warning{
-            color: var(--red);
-            font-weight: 600;
-            padding: 0px;
-        }
-
-        .spekl{
-            background-color: var(--moderatelyDarkGrey);
+        .userbox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         table{
-            align-self: center;
+            border-style: none;
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
         }
-    </style>
 
-    <script>
-        if(document.getElementById('data').innerText.length == 0){
-            document.getElementById('spekl').classList.add('hidden');
-            document.getElementById('nood').classList.add('title');
-            document.getElementById('nood').classList.remove('hidden');
+        th{
+            padding: 0.5rem;
+            text-align: left;
         }
-    </script>
+
+        td{
+            padding: 0.5rem;
+        }
+
+    </style>
 
 </body>
 </html>

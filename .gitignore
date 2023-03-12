@@ -131,3 +131,5 @@ dist
 
 # Code Workspace
 *.code-workspace
+db.json
+users.json

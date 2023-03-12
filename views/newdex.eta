@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM - Add Products</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>SIM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
@@ -14,48 +13,46 @@
     <h1 class="title">SIM</h1>
     <h2 class="subtitle">A Shop Inventory Management System</h2>
 
-    <div>
-        <form action="/adding">
-            <label for="name"><b>Product Name</b><span class="reqd">*</span></label>
-            <input type="text" placeholder="Enter Product Name" name="name" required>
+    <table>
+        <tr>
+            <td>
+                <form action="/add">
+                    <button class="add">
+                        <i class="fa fa-plus"></i>
+                        Add New
+                    </button>
+                </form>
+            </td>
 
-            <label for="quantity"><b>Quantity</b><span class="reqd">*</span></label>
-            <input type="number" placeholder="Enter Quantity" name="quantity" required>
+            <td>
+                <form action="/view">
+                    <button class="add">
+                            <i class="fa fa-list"></i>
+                            View All Products
+                    </button>
+                </form>
+            </td>
 
-            <label for="date"><b>Expiry Date</b><span class="reqd">*</span></label>
-            <input type="date" name="date" required>
+            <td>
+                <form action="/removedlist">
+                    <button class="add">
+                            <i class="fa fa-minus-circle"></i>
+                            View Removed Products
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
 
-            <label for="remove">Remove # days before<span class="reqd">*</span></label>
-            <input type="number" name="remby" required>
-
-            <label for="area">Area<span class="reqd">*</span></label>
-            <select id="area" name="area">
-                <option value="TillSnacks">Till Snacks</option>
-                <option value="LaneSeparator">Lane Separator</option>
-                <option value="Till2SnackWall">Till 2 Snack Wall</option>
-                <option value="IceCreamFreezer">Ice Cream Freezer</option>
-                <option value="SmallMinerals">Small Minerals</option>
-                <option value="SpiderFridge">Spider Fridge</option>
-                <option value="BakeryItems" >Bakery Items</option>
-                <option value="RedValueBaskets">'Red Value' Baskets</option>
-                <option value="BigCrisps">Big Crisps</option>
-                <option value="ConsumablesAisle">Consumables Aisle</option>
-                <option value="BiscuitsAisle">Biscuits Aisle</option>
-                <option value="BreadAisle">Bread Aisle</option>
-                <option value="EggsBakingAndCookingAisle">Eggs, Baking and Cooking Aisle</option>
-                <option value="OutsideAlcoholSnacks">Outside Alcohol Snacks</option>
-                <option value="Alcohols">Alcohol</option>
-                <option value="DairyWall">Dairy Wall</option>
-                <option value="DairyWallFreezer">Dairy Wall Freezer</option>
-                <option value="BigMinerals">Big Minerals</option>
-                <option value="PetFoodAndPolishProduceAisle">Pet Food and Polish Produce Aisle</option>
-            </select>
-
-            <button type="submit" class="addProduct">
-                <i class="fa fa-plus"></i>
-                Add Product
-            </button>
-        </form>
+    <div class="remove">
+        <div class="remint">
+            <h1 id="nood" class="hidden">Nothing is out of date today.</h1>
+            <div id="spekl" class="spekl">
+                <h1 class="title">Out of Date!</h1>
+                <h2 class="subtitle">Remove the following items from the shop floor:</h2>
+                <div id="data" class="spekl"><%~ it.data%></div>
+            </div>
+        </div>
     </div>
 
     <style>
@@ -77,7 +74,12 @@
 
         body{
             height: 100%;
-            width: 99%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
             background-color: var(--black);
             color: var(--white);
             font-family: "IBM Plex Sans", sans-serif;
@@ -141,6 +143,8 @@
             justify-content: center;
             height: 100%;
             width: 100%;
+            padding = 0;
+            margin = 0;
         }
 
         .add{
@@ -148,14 +152,19 @@
             background-color: var(--moderatelyDarkGrey);
         }
 
+        i{
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
         .add i{
             color: var(--green);
         }
 
         input{
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            margin-left: 0;
+            padding: 0;
+            margin: 0;
             border-radius: 0.5rem;
 
             color: var(--black);
@@ -225,6 +234,34 @@
         .remint h1{
             text-shadow: 2.5px 2.5px 0 var(--black);
         }
+
+        .removebutton{
+            align-self: center;
+            background-color: var(--red);
+        }
+
+        .warning{
+            color: var(--red);
+            font-weight: 600;
+            padding: 0px;
+        }
+
+        .spekl{
+            background-color: var(--moderatelyDarkGrey);
+        }
+
+        table{
+            align-self: center;
+        }
     </style>
+
+    <script>
+        if(document.getElementById('data').innerText.length == 0){
+            document.getElementById('spekl').classList.add('hidden');
+            document.getElementById('nood').classList.add('title');
+            document.getElementById('nood').classList.remove('hidden');
+        }
+    </script>
+
 </body>
 </html>
