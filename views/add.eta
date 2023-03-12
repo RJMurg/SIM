@@ -15,6 +15,16 @@
     <h2 class="subtitle">A Shop Inventory Management System</h2>
 
     <div>
+        <table class="override">
+            <tr>
+                <td>
+                    <form action="/">
+                        <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
         <form action="/adding">
             <label for="name"><b>Product Name</b><span class="reqd">*</span></label>
             <input type="text" placeholder="Enter Product Name" name="name" required>
