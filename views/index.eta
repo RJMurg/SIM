@@ -34,19 +34,10 @@
             </td>
 
             <td>
-                <form action="/employee">
+                <form action="/removedlist">
                     <button class="add">
-                        <i class="fa fa-user"></i>
-                        Employee Login
-                    </button>
-                </form>
-            </td>
-
-            <td>
-                <form action="/login">
-                    <button class="add">
-                        <i class="fa fa-shield"></i>
-                        Admin Login
+                            <i class="fa fa-minus-circle"></i>
+                            View Removed Products
                     </button>
                 </form>
             </td>
