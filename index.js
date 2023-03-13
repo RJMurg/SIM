@@ -18,6 +18,8 @@ app.set("view engine", "eta")
 
 const stock = join(__dirname, "/db.json");
 const adapter = new JSONFile(stock)
+const stock = join(__dirname, "/db.json");
+const adapter = new JSONFile(stock)
 const db = new Low(adapter)
 
 const removed = join(__dirname, "/removed.json");

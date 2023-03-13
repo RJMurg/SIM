@@ -4,35 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<<< HEAD:views/view.eta
-    <title>SIM - PRODUCTS</title>
-========
-    <title>SIM - Add Products</title>
-    <link rel="stylesheet" href="css/style.css">
->>>>>>>> main:views/add.eta
+    <title>SIM - USERS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
-    <h1 class="title">SIM</h1>
-<<<<<<<< HEAD:views/view.eta
-    <h2 class="subtitle">View All Products</h2>
-========
-    <h2 class="subtitle">A Shop Inventory Management System</h2>
->>>>>>>> main:views/add.eta
+    <h1 class="title">SIM ADMIN</h1>
+    <h2 class="subtitle">User Panel</h2>
 
     <table class="override">
         <tr>
             <td>
-                <form action="/">
+                <form action="/admin">
                     <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
                 </form>
             </td>
 
             <td>
-                <form action="/add">
-                        <button class="add" type="submit"><i class="fa fa-plus"></i>Add New</button>
+                <form action="/addUser">
+                        <button class="add" type="submit"><i class="fa fa-plus"></i>Add User</button>
                 </form>
             </td>
         </tr>
@@ -42,11 +33,11 @@
 
         <table>
             <tr>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Expiry Date</th>
-                <th>Pull Date</th>
-                <th>Location</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Can Edit</th>
+                <th>Is Admin</th>
+                <th>Actions</th>
             </tr>
             <%~ it.data%>
         </table>

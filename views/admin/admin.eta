@@ -4,53 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<<< HEAD:views/view.eta
-    <title>SIM - PRODUCTS</title>
-========
-    <title>SIM - Add Products</title>
-    <link rel="stylesheet" href="css/style.css">
->>>>>>>> main:views/add.eta
+    <title>SIM - ADMIN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
-    <h1 class="title">SIM</h1>
-<<<<<<<< HEAD:views/view.eta
-    <h2 class="subtitle">View All Products</h2>
-========
-    <h2 class="subtitle">A Shop Inventory Management System</h2>
->>>>>>>> main:views/add.eta
+    <h1 class="title">SIM ADMIN</h1>
+    <h2 class="subtitle">Management Panel</h2>
 
-    <table class="override">
+    <table>
         <tr>
             <td>
-                <form action="/">
-                    <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
+                <form action="/users">
+                    <button class="add" type="submit">
+                        <i class="fa fa-group"></i>
+                        View and Edit Employees
+                    </button>
                 </form>
             </td>
 
             <td>
-                <form action="/add">
-                        <button class="add" type="submit"><i class="fa fa-plus"></i>Add New</button>
+                <form action="/logs">
+                    <button class="add" type="submit">
+                        <i class="fa fa-file"></i>
+                        View Stock Logs
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form action="/database">
+                    <button class="add" type="submit">
+                        <i class="fa fa-pencil"></i>
+                        Edit Database
+                    </button>
                 </form>
             </td>
         </tr>
     </table>
-
-    <div class="userbox">
-
-        <table>
-            <tr>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Expiry Date</th>
-                <th>Pull Date</th>
-                <th>Location</th>
-            </tr>
-            <%~ it.data%>
-        </table>
-    </div>
 
     <style>
         :root{
@@ -72,6 +64,8 @@
         body{
             height: 100%;
             width: 99%;
+            display: flex;
+            flex-direction: column;
             background-color: var(--black);
             color: var(--white);
             font-family: "IBM Plex Sans", sans-serif;
@@ -131,8 +125,8 @@
             justify-content: center;
             height: 100%;
             width: 100%;
-            padding: 0;
-            margin: 0;
+            padding = 0;
+            margin = 0;
         }
 
         .add{
@@ -179,60 +173,38 @@
             border: none;
         }
 
+        .reqd{
+            color: var(--red);
+            font-weight: 600;
+        }
+
         .removebutton{
             align-self: center;
             background-color: var(--red);
         }
 
-        .userbox{
+        .warning{
+            color: var(--red);
+            font-weight: 600;
+            padding: 0px;
+        }
+
+        table{
+            width: 50%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            align-self: center;
+            border-collapse: collapse;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        table{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        th{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
-            padding: 0.5rem;
-            text-align: left;
-        }
-
         td{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
-            padding: 0.5rem;
-            text-align: left;
+            padding-left: 15px;
+            padding-right: 15px;
         }
-
-        .override{
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border: none;
-        }
-
-        .override td{
-            border: none;
-            padding: 0;
-            margin: 0;
-        }
-
     </style>
 
 </body>

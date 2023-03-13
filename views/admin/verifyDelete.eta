@@ -4,52 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<<< HEAD:views/view.eta
-    <title>SIM - PRODUCTS</title>
-========
-    <title>SIM - Add Products</title>
-    <link rel="stylesheet" href="css/style.css">
->>>>>>>> main:views/add.eta
+    <title>SIM - DELETING <%~ it.userName%></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
-    <h1 class="title">SIM</h1>
-<<<<<<<< HEAD:views/view.eta
-    <h2 class="subtitle">View All Products</h2>
-========
-    <h2 class="subtitle">A Shop Inventory Management System</h2>
->>>>>>>> main:views/add.eta
 
-    <table class="override">
-        <tr>
-            <td>
-                <form action="/">
-                    <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
-                </form>
-            </td>
+    <div class="remBox">
+        <div class="remBoxInt">
+            <h1 class="title">Are you sure you want to delete <%~ it.userName%>?</h1>
 
-            <td>
-                <form action="/add">
-                        <button class="add" type="submit"><i class="fa fa-plus"></i>Add New</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+            <table>
+                <tr>
+                    <td>
+                        <form action="/deleteUser">
+                            <input type="hidden" name="id" value=<%~ it.id%>>
+                            <button class="removebutton" type="submit">Yes</button>
+                        </form>
+                    </td>
 
-    <div class="userbox">
-
-        <table>
-            <tr>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Expiry Date</th>
-                <th>Pull Date</th>
-                <th>Location</th>
-            </tr>
-            <%~ it.data%>
-        </table>
+                    <td>
+                        <form action="/users" method="GET">
+                            <button class="removebutton" type="submit">No</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
     </div>
 
     <style>
@@ -168,7 +149,6 @@
 
         select{
             padding: 0.5rem;
-            margin-bottom: 0.5rem;
             margin-left: 0;
             border-radius: 0.5rem;
 
@@ -177,60 +157,68 @@
             font-size: 1rem;
             font-weight: 400;
             border: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        input{
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            margin: 0;
+            border-radius: 0.5rem;
+
+            color: var(--black);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+            height: 100%;
+            width: 95%;
         }
 
         .removebutton{
             align-self: center;
+            font-size: 2rem;
+            font-weight: 600;
+            padding: 2rem;
             background-color: var(--red);
         }
 
-        .userbox{
+        .remBox{
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: var(--red);
+        }
+
+        .remBoxInt{
+            background-color: var(--moderatelyDarkGrey);
+            width: 95%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 0.5rem;
+            box-shadow: 0 0 0.5rem 0.125rem inset var(--black);
         }
 
         table{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
+            border-style: none;
             border-collapse: collapse;
             width: 100%;
             table-layout: fixed;
         }
 
         th{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
             padding: 0.5rem;
             text-align: left;
         }
 
         td{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
             padding: 0.5rem;
-            text-align: left;
-        }
-
-        .override{
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border: none;
-        }
-
-        .override td{
-            border: none;
-            padding: 0;
-            margin: 0;
         }
 
     </style>

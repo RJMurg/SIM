@@ -4,53 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<<< HEAD:views/view.eta
-    <title>SIM - PRODUCTS</title>
-========
-    <title>SIM - Add Products</title>
-    <link rel="stylesheet" href="css/style.css">
->>>>>>>> main:views/add.eta
+    <title>SIM - LOGIN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
     <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </head>
 <body>
     <h1 class="title">SIM</h1>
-<<<<<<<< HEAD:views/view.eta
-    <h2 class="subtitle">View All Products</h2>
-========
     <h2 class="subtitle">A Shop Inventory Management System</h2>
->>>>>>>> main:views/add.eta
 
-    <table class="override">
-        <tr>
-            <td>
-                <form action="/">
-                    <button class="add" type="submit"><i class="fa fa-arrow-left"></i>Back</button>
-                </form>
-            </td>
+    <form action="/">
+        <button class="add">
+            <i class="fa fa-arrow-left"></i>
+            BACK
+        </button>
+    </form>
 
-            <td>
-                <form action="/add">
-                        <button class="add" type="submit"><i class="fa fa-plus"></i>Add New</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+    <form action="/logging">
+    <p class="admin">ADMIN Login</p>
+    <label for="password">Password <span class="reqd">*</span></label>
+    <input type="password" name="pwd" id="pwd" placeholder="Password" required>
 
-    <div class="userbox">
+    <button class="add">LOGIN</button>
+    </form>
 
-        <table>
-            <tr>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Expiry Date</th>
-                <th>Pull Date</th>
-                <th>Location</th>
-            </tr>
-            <%~ it.data%>
-        </table>
-    </div>
 
     <style>
         :root{
@@ -71,7 +48,12 @@
 
         body{
             height: 100%;
-            width: 99%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
             background-color: var(--black);
             color: var(--white);
             font-family: "IBM Plex Sans", sans-serif;
@@ -131,8 +113,8 @@
             justify-content: center;
             height: 100%;
             width: 100%;
-            padding: 0;
-            margin: 0;
+            padding = 0;
+            margin = 0;
         }
 
         .add{
@@ -150,13 +132,22 @@
             color: var(--green);
         }
 
+        input{
+            padding: 0.5rem;
+            margin: 0;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+
+            color: var(--black);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+        }
+
         button:hover{
             background-color: var(--darkGrey);
             transition: 0.25s ease-in-out;
-        }
-
-        .addProduct i{
-            color: var(--green);
         }
 
         label{
@@ -179,60 +170,16 @@
             border: none;
         }
 
-        .removebutton{
-            align-self: center;
-            background-color: var(--red);
+
+        .reqd{
+            color: var(--red);
+            font-weight: 600;
         }
 
-        .userbox{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .admin{
+            font-size: 2rem;
+            font-weight: 600;
         }
-
-        table{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        th{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
-            padding: 0.5rem;
-            text-align: left;
-        }
-
-        td{
-            border-radius: 0.5rem;
-            border-width: 1px;
-            border-color: var(--white);
-            border-style: solid;
-            border-collapse: collapse;
-            padding: 0.5rem;
-            text-align: left;
-        }
-
-        .override{
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border: none;
-        }
-
-        .override td{
-            border: none;
-            padding: 0;
-            margin: 0;
-        }
-
     </style>
 
 </body>
