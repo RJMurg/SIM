@@ -257,6 +257,7 @@
     </style>
 
     <script>
+        // This checks to see if the data is empty, and if it is, it hides the data div and shows the 'Nothing is out of date' message.
         if(document.getElementById('data').innerText.length == 0){
             document.getElementById('spekl').classList.add('hidden');
             document.getElementById('nood').classList.add('title');
