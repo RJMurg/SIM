@@ -1,9 +1,8 @@
-# SIM
-## A Shop Inventory Managment system.
+# SIM - BETA
 
-SIM was created while I was working at a corner shop. I wrote it to make identifying and pulling near-dated or out-of-date stock easier. The homepage provides an at-a-glance list of products that need to be removed.
+**SIM - BETA** is the VERY UNSTABLE, active development branch of SIM. Unlike SIM - MVP, it contains significantly more features, and unlike SIM - Main, it is unstable and missing complete functionality of all features.
 
-SIM is a Node app using LowDB, ETA and Express to create a simple web app that can be used to keep track of product expiry dates.
+SIM - BETA will not have comprehensive documentation, and is not recommended for use in production environments, SIM - BETA may update regularly with incomplete features that may destroy workflows or active databases.
 
 ### Requirements
 - Node.js
@@ -14,18 +13,14 @@ SIM is a Node app using LowDB, ETA and Express to create a simple web app that c
 3. Run `npm start`
 4. Navigate to `localhost:3000`
 
-## Usage
-When you want to add a product to the expiration database, press the 'Add New' button on the homepage and fill out the relevant details.
-When you have removed the item from the shelves, press the relevant removal button.
-
-## To-Do
+## BETA To-Do
 ### V1.1.X
 - [ ] Add a way to edit products.
 - [X] Add a way to delete products individually.
-- [ ] Add a way to view all products.
+- [X] Add a way to view all products.
 - [ ] Add a way to view all products that are expiring soon.
 - [ ] Add a way for employees to state what products they are removing.
-- [ ] Add a way to view all products that have been removed.
+- [X] Add a way to view all products that have been removed.
 - [ ] Add a removal reason.
 - [X] Add an Admin Panel.
 - [X] Add a Users system.
