@@ -95,6 +95,7 @@ app.get('/', async function (req, res) {
     let todaysDate = new Date();
     todaysDate = todaysDate.toISOString().slice(0,10);
     let dateCheck = todaysDate.split('-')
+    console.log("Date Check " + dateCheck)
 
     for(let i = 0; i < Object.keys(toSend).length; i++){
         for(let j = 0; j < Object.values(toSend)[i].length; j++){
@@ -104,19 +105,20 @@ app.get('/', async function (req, res) {
             removalDate = removalDate.split('-');
             removalDate[2] = (parseInt(removalDate[2]) - parseInt(Object.values(toSend)[i][j].product.remby)).toString().padStart(2, '0');
 
+            console.log("Removal Year: " + removalDate[0] + " Removal Month: " + removalDate[1] + " Removal Day: " + removalDate[2])
+
             for(let k = 0; k < removalDate.length; k++){
                 removalDate[k] = parseInt(removalDate[k])
                 dateCheck[k] = parseInt(dateCheck[k])
 
-                if(removalDate[0] < dateCheck[0]){
+                if(
+                    removalDate[0] < dateCheck[0] ||
+                    removalDate[1] < dateCheck[1] ||
+                    removalDate[2] <= dateCheck[2]
+                ){
                     outOfDate = true;
                 }
-                else if(removalDate[1] < dateCheck[1]){
-                    outOfDate = true;
-                }
-                else if(removalDate[2] <= dateCheck[2]){
-                    outOfDate = true;
-                }
+
             }
 
             if(outOfDate == true){
