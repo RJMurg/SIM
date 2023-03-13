@@ -95,7 +95,6 @@ app.get('/', async function (req, res) {
     let todaysDate = new Date();
     todaysDate = todaysDate.toISOString().slice(0,10);
     let dateCheck = todaysDate.split('-')
-    console.log("Date Check " + dateCheck)
 
     for(let i = 0; i < Object.keys(toSend).length; i++){
         for(let j = 0; j < Object.values(toSend)[i].length; j++){
