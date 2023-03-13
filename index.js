@@ -105,8 +105,6 @@ app.get('/', async function (req, res) {
             removalDate = removalDate.split('-');
             removalDate[2] = (parseInt(removalDate[2]) - parseInt(Object.values(toSend)[i][j].product.remby)).toString().padStart(2, '0');
 
-            console.log("Removal Year: " + removalDate[0] + " Removal Month: " + removalDate[1] + " Removal Day: " + removalDate[2])
-
             for(let k = 0; k < removalDate.length; k++){
                 removalDate[k] = parseInt(removalDate[k])
                 dateCheck[k] = parseInt(dateCheck[k])
