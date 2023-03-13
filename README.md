@@ -1,8 +1,9 @@
-# SIM - MVP
+# SIM V1.0.2
 ## A Shop Inventory Managment system.
 
-SIM - MVP (Minimum Viable Product) is a stripped-down version of SIM. It contains features present in the original project scope.
-SIM is a Node app using LowDB, ETA and Express to create a simple web app that can be used to keep track of product expiry dates.
+SIM is a web app designed to help small businesses keep track of the expiration of products in the stockroom or on the floor.
+
+It is written in Node using LowDB for the database, ETA for serving content and Express for the web server.
 
 ### Features
 - Automatic listing of out-of-date products.
@@ -10,8 +11,6 @@ SIM is a Node app using LowDB, ETA and Express to create a simple web app that c
 - Adding of products and information.
 - Viewing all products.
 - Viewing all removed products.
-
-SIM - MVP does NOT contain: Users, Admin Panel, Removal Reasons, Removal by User, Cookies, Password Hashing, XSS Protection, etc.
 
 ### Requirements
 - Node.js

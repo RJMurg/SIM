@@ -11,7 +11,6 @@
 </head>
 <body>
     <h1 class="title">SIM</h1>
-    <h1 class="title">SIM</h1>
     <h2 class="subtitle">A Shop Inventory Management System</h2>
 
     <table>
@@ -257,6 +256,7 @@
     </style>
 
     <script>
+        // This checks to see if the data is empty, and if it is, it hides the data div and shows the 'Nothing is out of date' message.
         if(document.getElementById('data').innerText.length == 0){
             document.getElementById('spekl').classList.add('hidden');
             document.getElementById('nood').classList.add('title');
