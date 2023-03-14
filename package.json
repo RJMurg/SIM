@@ -28,7 +28,7 @@
     "lowdb": "^5.1.0",
     "nodemon": "^2.0.21",
     "puppeteer-core": "^19.7.4",
-    "sqlite3": "^5.1.4",
+    "sqlite3": "^5.1.5",
     "uuid": "^9.0.0"
   },
   "nodemonConfig": {
