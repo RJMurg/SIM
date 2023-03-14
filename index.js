@@ -87,12 +87,26 @@ if(userDb.data.users.length == 0){
     console.log("No users found, creating admin user with password 'admin'.")
 }
 
+function selectElement(){
+    return 'selected="selected"'
+}
+
+const getDays = (year, month) => {
+    return new Date(year, month, 0).getDate()
+}
+
 app.use(express.static('public'))
 app.get('/', async function (req, res) {
     let toSend = db.data;
     let finalMessage = "<table>";
+    let expCheck = 0;
+
+    if(typeof(req.query.expCheck) != 'undefined'){
+        expCheck = req.query.expCheck;
+    }
 
     let todaysDate = new Date();
+    todaysDate.setDate(todaysDate.getDate() + expCheck)
     todaysDate = todaysDate.toISOString().slice(0,10);
     let dateCheck = todaysDate.split('-')
 
@@ -139,9 +153,13 @@ app.get('/', async function (req, res) {
 
     finalMessage = finalMessage + "</table>";
 
-    let parsedSend = JSON.stringify(toSend);
-
-    res.render('newdex', { data: finalMessage})
+    res.render('index', { data: finalMessage,
+                          Today: req.query.Today,
+                          Tomorrow: req.query.Tomorrow, 
+                          ThisWeek: req.query.ThisWeek, 
+                          NextWeek: req.query.NextWeek, 
+                          ThisMonth: req.query.ThisMonth, 
+                          NextMonth: req.query.NextMonth})
 })
 
 app.get('/add', function (req, res) {
@@ -279,27 +297,27 @@ app.get('/editUser', async function(req, res) {
             isAdmin = userDb.data.users[i].isAdmin;
 
             if(position == 0){
-                manager = 'selected="selected"';
+                manager = selectElement();
             }
             else if(position == 1){
-                supervisor = 'selected="selected"';
+                supervisor = selectElement();
             }
             else if(position == 2){
-                salesAssistant = 'selected="selected"';
+                salesAssistant = selectElement();
             }
 
             if(canEdit == true){
-                editTrue = 'selected="selected"';
+                editTrue = selectElement();
             }
             else{
-                editFalse = 'selected="selected"';
+                editFalse = selectElement();
             }
 
             if(isAdmin == true){
-                adminTrue = 'selected="selected"';
+                adminTrue = selectElement();
             }
             else{
-                adminFalse = 'selected="selected"';
+                adminFalse = selectElement();
             }
 
             break;
@@ -461,6 +479,87 @@ app.get('/removedList', async function(req, res) {
     }
 
     res.render('removedlist.eta', {data: finalMessage})
+})
+
+app.get('/expires', async function(req, res) {
+    let today = new Date();
+    let endOfWeek = today.getDay()
+    let wantedExp = req.query.cutoff;
+    let expCheck = 0;
+    let redirMsg = "/?"
+
+    switch(wantedExp){
+        case "Today":
+            let Today = selectElement()
+
+            expCheck = 0;
+
+            redirMsg = redirMsg
+            + "Today=" + Today
+
+            break;
+        
+        case "Tomorrow":
+            let Tomorrow = selectElement()
+
+            expCheck = 1;
+
+            redirMsg = redirMsg
+            + "Tomorrow=" + Tomorrow
+
+            break;
+        
+        case "ThisWeek":
+            let ThisWeek = selectElement()
+
+            expCheck = 7 - endOfWeek;
+
+            redirMsg = redirMsg
+            + "ThisWeek=" + ThisWeek
+
+            break;
+
+        case "NextWeek":
+            let NextWeek = selectElement()
+
+            expCheck = 14 - endOfWeek;
+
+            redirMsg = redirMsg
+            + "NextWeek=" + NextWeek
+
+            break;
+        
+        case "ThisMonth":
+            let ThisMonth = selectElement()
+
+            expCheck = getDays(today.getFullYear(), today.getMonth()) - endOfWeek;
+
+            redirMsg = redirMsg
+            + "ThisMonth=" + ThisMonth
+
+            break;
+
+        case "NextMonth":
+            let NextMonth = selectElement()
+
+            if(today.getMonth() < 11){
+                expCheck = getDays(today.getFullYear(), today.getMonth() + 1) - endOfWeek;
+            }
+            else{
+                expCheck = getDays(today.getFullYear(), 0) - endOfWeek;
+            }
+
+            redirMsg = redirMsg
+            + "NextMonth=" + NextMonth
+
+            break;
+    }
+
+    redirMsg = redirMsg
+    + "&expCheck=" + expCheck
+
+    res.redirect(redirMsg)
+
 })
 
 console.log('Listening on port ' + port + '...');

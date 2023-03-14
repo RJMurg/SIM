@@ -2,9 +2,9 @@
   "users": [
     {
       "name": "admin",
-      "position": 0,
-      "canEdit": true,
-      "isAdmin": true,
+      "position": "0",
+      "canEdit": "false",
+      "isAdmin": "false",
       "password": "admin",
       "id": "35e03e57-a3e3-4972-a16c-d348c0401603"
     }

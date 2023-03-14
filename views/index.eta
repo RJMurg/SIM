@@ -16,24 +16,6 @@
     <table>
         <tr>
             <td>
-                <form action="/add">
-                    <button class="add">
-                        <i class="fa fa-plus"></i>
-                        Add New
-                    </button>
-                </form>
-            </td>
-
-            <td>
-                <form action="/view">
-                    <button class="add">
-                            <i class="fa fa-list"></i>
-                            View All Products
-                    </button>
-                </form>
-            </td>
-
-            <td>
                 <form action="/employee">
                     <button class="add">
                         <i class="fa fa-user"></i>
@@ -54,6 +36,54 @@
     </table>
 
     <div class="remove">
+        <table>
+                <tr>
+                    <td>
+                        <form action="/add">
+                            <button class="add">
+                                <i class="fa fa-plus"></i>
+                                Add New
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="/view">
+                            <button class="add">
+                                    <i class="fa fa-list"></i>
+                                    View All Products
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="/removedlist">
+                            <button class="add">
+                                    <i class="fa fa-minus-circle"></i>
+                                    View Removed Products
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="/expires" class="dateForm">
+                            <select id="cutoff" name="cutoff">
+                                <option value="Today" <%~ it.Today%>>Today</option>
+                                <option value="Tomorrow"<%~ it.Tomorrow%>>Tomorrow</option>
+                                <option value="ThisWeek" <%~ it.ThisWeek%>>This Week</option>
+                                <option value="NextWeek" <%~ it.NextWeek%>>Next Week</option>
+                                <option value="ThisMonth" <%~ it.ThisMonth%>>This Month</option>
+                                <option value="NextMonth" <%~ it.NextMonth%>>Next Month</option>
+                            </select>
+
+                            <button class="add">
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
         <div class="remint">
             <h1 id="nood" class="hidden">Nothing is out of date today.</h1>
             <div id="spekl" class="spekl">
@@ -152,8 +182,8 @@
             justify-content: center;
             height: 100%;
             width: 100%;
-            padding = 0;
-            margin = 0;
+            padding: 0;
+            margin: 0;
         }
 
         .add{
@@ -261,6 +291,32 @@
 
         table{
             align-self: center;
+        }
+
+        .dateLabel{
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .dateForm{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .dateForm select{
+            margin: 0px;
+            margin-top: 1rem;
+        }
+
+        .dateForm button{
+            margin: 0px;
+            margin-top: 1rem;
+            padding: 0.5rem;
+        }
+
+        .dateForm i{
+            margin: 0px;
+            padding: 0px;
         }
     </style>
 

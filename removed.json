@@ -1,5 +1,36 @@
 {
-  "TillSnacks": [],
+  "TillSnacks": [
+    {
+      "product": {
+        "name": "asd",
+        "quantity": "2",
+        "expiry": "2023-03-14",
+        "remby": "22",
+        "id": "67b73c2d-2902-4c40-ac06-1dff0015191d",
+        "removed": "2023-03-14"
+      }
+    },
+    {
+      "product": {
+        "name": "asd",
+        "quantity": "2",
+        "expiry": "2023-03-14",
+        "remby": "22",
+        "id": "f5720aa6-5b57-4199-bc05-ffd8e42c336b",
+        "removed": "2023-03-14"
+      }
+    },
+    {
+      "product": {
+        "name": "asd",
+        "quantity": "2",
+        "expiry": "2023-03-14",
+        "remby": "22",
+        "id": "5a3a0432-3321-4158-9d87-61b8f9223f93",
+        "removed": "2023-03-14"
+      }
+    }
+  ],
   "LaneSeparator": [],
   "IceCreamFreezer": [],
   "SmallMinerals": [],
