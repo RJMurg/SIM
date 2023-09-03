@@ -1,5 +1,7 @@
 <script lang="ts">
     import type { PageData, ActionData } from './$types';
+    import Toasts from "$lib/Toasts.svelte";
+    import { addToast } from "$lib/store.js";
     
     export let data: PageData;
     export let form: ActionData;
@@ -15,8 +17,22 @@
     $: rawRemovalDate.setDate(rawRemovalDate.getDate() - 1);
     $: removalDate = rawRemovalDate.toISOString().slice(0, 10);
 
-    if(form?.success) {
-        window.location.href = "/";
+    if (form?.code == 200) {
+        let productName = form?.message;
+        addToast({
+            message: productName + " added successfully!",
+            type: "success",
+            dismissible: true,
+            timeout: 5000
+        });
+    }
+    else if (form?.code == 500) {
+        addToast({
+            message: form?.message,
+            type: "error",
+            dismissible: true,
+            timeout: 5000
+        });
     }
 
     export let back = () => {
@@ -27,29 +43,46 @@
 <h1 class="title large text">SIM</h1>
 <h2 class="subtitle medium text">A Shop Inventory Management System</h2>
 
+<Toasts />
+
 <div class="exterior">
     <div class="interior">
         <div class="left">
-            <button class="button short medium" on:click={back()}>
+            <button class="button short medium" on:click={() => back()}>
                 <i class="fa fa-arrow-left"></i>
                 Back
             </button>
         </div>
 
         <form method="post">
-            <label for="name">Product Name</label>
-            <input type="text" name="name" placeholder="Product Name"/>
+            <label for="name">
+                Product Name
+                <span class="required">*</span>
+            </label>
+            <input type="text" name="name" placeholder="Product Name" required/>
 
-            <label for="quantity">Quantity</label>
-            <input type="number" name="quantity" placeholder="Quantity"/>
+            <label for="quantity">
+                Quantity
+                <span class="required">*</span>
+            </label>
+            <input type="number" name="quantity" placeholder="Quantity" required/>
 
-            <label for="Expiry">Expiry Date</label>
-            <input type="date" name="expiry" placeholder="Expiry Date" bind:value={date}/>
+            <label for="Expiry">
+                Expiry Date
+                <span class="required">*</span>
+            </label>
+            <input type="date" name="expiry" placeholder="Expiry Date" bind:value={date} required/>
 
-            <label for="removal">Removal Date</label>
-            <input type="date" name="removal" placeholder="Remove on what date" bind:value={removalDate}/>
+            <label for="removal">
+                Removal Date
+                <span class="required">*</span>
+            </label>
+            <input type="date" name="removal" placeholder="Remove on what date" bind:value={removalDate} required/>
 
-            <label for="location">Location</label>
+            <label for="location">
+                Location
+                <span class="required">*</span>
+            </label>
             <select name="location">
                 {#each data.locations as location}
                     <option value={location.id}>{location.name}</option>
@@ -61,11 +94,5 @@
                 Add Product
             </button>
         </form>
-
-        {#if form?.success}
-            <div class="success">
-                <p>Product added successfully!</p>
-            </div>
-        {/if}
     </div>
 </div>

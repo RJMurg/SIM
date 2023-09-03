@@ -324,3 +324,8 @@ td{
 .right{
     align-self: flex-end;
 }
+
+.required{
+    color: var(--red);
+    font-weight: 700;
+}
