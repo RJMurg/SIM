@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { PageData, ActionData } from './$types';
+    import Title from "$lib/Title.svelte";
     import Toasts from "$lib/Toasts.svelte";
     import { addToast } from "$lib/store.js";
     
@@ -40,8 +41,11 @@
     }
 </script>
 
-<h1 class="title large text">SIM</h1>
-<h2 class="subtitle medium text">A Shop Inventory Management System</h2>
+<head>
+    <title>SIM - Add Product</title>
+</head>
+
+<Title />
 
 <Toasts />
 
