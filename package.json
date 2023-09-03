@@ -1,43 +1,26 @@
 {
-  "name": "sim",
-  "version": "1.0.2",
-  "description": "A Shop Inventory Management system",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "working": "start powershell",
-    "start": "nodemon -e js,json,mjs,eta ./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RJMurg/SIMmer.git"
-  },
-  "author": "Ruán",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RJMurg/SIMmer/issues"
-  },
-  "homepage": "https://github.com/RJMurg/SIMmer#readme",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "cookie-parser": "^1.4.6",
-    "crypto-js": "^4.1.1",
-    "eta": "^2.0.1",
-    "express": "^4.18.2",
-    "lowdb": "^5.1.0",
-    "nodemon": "^2.0.21",
-    "puppeteer-core": "^19.7.4",
-    "sqlite3": "^5.1.4",
-    "uuid": "^9.0.0"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "node_modules",
-      "db.json"
-    ]
-  },
-  "devDependencies": {
-    "@types/pug": "^2.0.6"
-  }
+	"name": "sim",
+	"version": "2.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.20.4",
+		"svelte": "^4.0.5",
+		"svelte-check": "^3.4.3",
+		"tslib": "^2.4.1",
+		"typescript": "^5.0.0",
+		"vite": "^4.4.2"
+	},
+	"type": "module",
+	"dependencies": {
+		"dotenv": "^16.3.1",
+		"pg": "^8.11.3"
+	}
 }
