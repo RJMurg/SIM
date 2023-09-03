@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
-import { Pool } from 'pg';
+import pg from 'pg';
+const { Pool } = pg;
 
 // Read in info from .env file
 import { config } from 'dotenv';
