@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { Pool } from 'pg';
 
@@ -10,7 +11,6 @@ const pool = new Pool({
 });
 
 export const load = (async () => {
-    await pool.connect();
 
     const res = await pool.query('SELECT * FROM Locations');
 
@@ -20,6 +20,7 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions = {
+    
     default: async ({ cookies, request }) => {
         let reqData = await request.formData()
         // Returns as format:
@@ -44,6 +45,7 @@ export const actions = {
                 'INSERT INTO Errors (timestamp, error) VALUES ($1, $2)',
                 [Date.now(), err]
             )
+
             return {
                 code: 500,
                 message: "Database error, Could not add product."
@@ -52,15 +54,13 @@ export const actions = {
 
         pool.on('error', (err, client) => {
             console.error('Unexpected error on idle client', err)
+
             return {
                 code: 500,
                 message: err
             }
         });
 
-        return {
-            code: 200,
-            message: reqData.get('name')
-        }
+        throw redirect(303, "/all");
     }
 } satisfies Actions;

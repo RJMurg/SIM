@@ -11,7 +11,7 @@ const pool = new Pool({
 
 export const load = (async () => {
 
-    const res = await pool.query('SELECT * FROM Products');
+    const res = await pool.query('SELECT * FROM Removed');
 
     const locs = await pool.query('SELECT * FROM Locations');
 
@@ -23,7 +23,14 @@ export const load = (async () => {
             }
         }
     }
-    
+
+    // Replace YYYY-MM-DD HH:MM:SS.MMMMMM+HH in removed with DD-MM-YY @ HH:MM
+    for (let i = 0; i < res.rows.length; i++) {
+        let date = res.rows[i].removed.split(' ')[0].split('-');
+        let time = res.rows[i].removed.split(' ')[1].split(':');
+        res.rows[i].removed = date[2] + '-' + date[1] + '-' + date[0] + ' @ ' + time[0] + ':' + time[1];
+    }
+
     return {
         products: res.rows
     };

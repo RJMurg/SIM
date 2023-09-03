@@ -36,7 +36,7 @@
         });
     }
 
-    export let back = () => {
+    export let home = () => {
         window.location.href = "/";
     }
 </script>
@@ -52,9 +52,9 @@
 <div class="exterior">
     <div class="interior">
         <div class="left">
-            <button class="button short medium" on:click={() => back()}>
-                <i class="fa fa-arrow-left"></i>
-                Back
+            <button class="button short medium" on:click={() => home()}>
+                <i class="fa fa-home"></i>
+                Home
             </button>
         </div>
 
