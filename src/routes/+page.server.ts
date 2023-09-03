@@ -28,13 +28,13 @@ export const load = (async () => {
     // If removal date is today or earlier, keep in res,
     // else remove from res
 
-    const today = new Date().getTime();
+    const rawToday = new Date();
+    const today = rawToday.getTime();
     let productDate;
 
     for (let i = 0; i < res.rows.length; i++) {
         productDate = new Date(res.rows[i].removal).getTime();
         if (productDate >= today) {
-            console.log("Removing item: ", JSON.stringify(res.rows[i]));
             res.rows.splice(i, 1);
             i--;
         }
