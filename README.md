@@ -4,7 +4,7 @@ SIM is a Shop Inventory Manager, a simple web tool to manage a shop's inventory.
 With SIM, you simply add the product to the inventory and when it is time to waste the product, it will be displayed.
 
 Currently SIM v2.0.1 is in development and is not ready for production use.
-Should you wish to use SIM V1.0.2 (the current stable version), please visit [SIM MVP](https://github.com/RJMurg/SIM/tree/mvp).
+Should you wish to use SIM V1.0.2 (the current stable version), please visit [SIM MVP](https://github.com/RJMurg/SIM/tree/MVP).
 
 ## Features
 - Simple Product management (add, edit, delete)
