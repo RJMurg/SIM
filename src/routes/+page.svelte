@@ -34,26 +34,26 @@
 <Title />
 
 <div class="exterior" style="background-color: var(--yellow)">
-    <div class="buttons">
-        <button class="button short butsmall" on:click={() => addProduct()}>
-            <i class="fa fa-plus"></i>
-            Add New
-        </button>
-        <button class="button short butsmall" on:click={() => viewAll()}>
-            <i class="fa fa-list"></i>
-            View All
-        </button>
-        <button class="button short butsmall" on:click={() => viewRemoved()}>
-            <i class="fa fa-minus-circle"></i>
-            View Removed
-        </button>
-        <button class="button short butsmall" on:click={() => viewLocations()}>
-            <i class="fa fa-map"></i>
-            View Locations
-        </button>
-    </div>
-
     <div class="interior">
+        <div class="buttons">
+            <button class="button short butsmall" on:click={() => addProduct()}>
+                <i class="fa fa-plus"></i>
+                Add New
+            </button>
+            <button class="button short butsmall" on:click={() => viewAll()}>
+                <i class="fa fa-list"></i>
+                View All
+            </button>
+            <button class="button short butsmall" on:click={() => viewRemoved()}>
+                <i class="fa fa-minus-circle"></i>
+                View Removed
+            </button>
+            <button class="button short butsmall" on:click={() => viewLocations()}>
+                <i class="fa fa-map"></i>
+                View Locations
+            </button>
+        </div>
+
         {#if data.products == undefined || data.products.length == 0}
             <h1 class="title large">Nothing is out of date today.</h1>
         {:else}
