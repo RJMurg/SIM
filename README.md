@@ -25,6 +25,7 @@ With SIM, you simply add the product to the inventory and when it is time to was
 3. Create a .env file in the root directory and add the following:
 ```bash
     DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<database>
+    PORT=4173
 ```
 
 4. Run the app
