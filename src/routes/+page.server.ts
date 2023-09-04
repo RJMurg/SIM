@@ -11,7 +11,7 @@ const pool = new Pool({
 });
 
 export const load = (async () => {
-
+    
     // See if the tables exist, if not, create them
     const checkProducts = await pool.query('SELECT * FROM Products');
 
@@ -31,7 +31,7 @@ export const load = (async () => {
         await pool.query('CREATE TABLE Removed (id SERIAL PRIMARY KEY, name TEXT, quantity INT, expiry TEXT, removal TEXT, location INT, removed TEXT)');
     }
 
-    const checkError = await pool.query('SELECT * FROM Error');
+    const checkErrors = await pool.query('SELECT * FROM Errors');
 
     if (checkError.rows.length == 0) {
         await pool.query('CREATE TABLE Error (id SERIAL PRIMARY KEY, timestamp TEXT, error TEXT)');
