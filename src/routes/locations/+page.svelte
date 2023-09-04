@@ -6,23 +6,23 @@
     export let home = () => {
         window.location.href = "/";
     },
-    productView = (id: string) => {
-        window.location.href = "/view/product/" + id;
+    viewLocation = (id: string) => {
+        window.location.href = "/view/location/" + id;
     },
-    productRemove = (id: string) => {
-        let confirmation = confirm("Are you sure you want to delete this product?");
+    removeLocation = (id: string) => {
+        let confirmation = confirm("Are you sure you want to delete this location?");
         
         if(confirmation){
-            window.location.href = "/remove/product/" + id;
+            window.location.href = "/remove/location/" + id;
         }
     },
-    addProduct = () => {
-        window.location.href = "/product";
+    addLocation = () => {
+        window.location.href = "/location";
     }
 </script>
 
 <head>
-    <title>SIM - All Products</title>
+    <title>SIM - All Locations</title>
 </head>
 
 <Title />
@@ -36,7 +36,7 @@
                 Home
             </button>
 
-            <button class="button short medium" on:click={() => addProduct()}>
+            <button class="button short medium" on:click={() => addLocation()}>
                 <i class="fa fa-plus"></i>
                 Add New
             </button>
@@ -51,33 +51,25 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Expiration Date</th>
-                        <th>Removal Date</th>
-                        <th>Location</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {#each data.products as product}
+                    {#each data.locations as location}
                         <tr>
-                            <td>{product.name}</td>
-                            <td>{product.quantity}</td>
-                            <td>{product.expiry}</td>
-                            <td>{product.removal}</td>
-                            <td>{product.location}</td>
+                            <td>{location.name}</td>
                             <td>
                                 <div class="actions">
-                                    <button class="action" on:click={() => productView(product.id)}><i class="fa fa-gear icon-center"></i></button>
-                                    <button class="action" on:click={() => productRemove(product.id)}><i class="fa fa-times icon-center"></i></button>
+                                    <button class="action" on:click={() => viewLocation(location.id)}><i class="fa fa-gear icon-center"></i></button>
+                                    <button class="action" on:click={() => removeLocation(location.id)}><i class="fa fa-times icon-center"></i></button>
                                 </div>
                             </td>
                         </tr>
                     {/each}
 
-                    {#if data.products.length == 0}
+                    {#if data.locations.length == 0}
                         <tr>
-                            <td colspan="6">No products found.</td>
+                            <td colspan="6">No locations found.</td>
                         </tr>
                     {/if}
                 </tbody>

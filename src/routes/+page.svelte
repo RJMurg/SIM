@@ -14,6 +14,9 @@
     viewRemoved = () => {
         window.location.href = "/removed";
     },
+    viewLocations = () => {
+        window.location.href = "/locations";
+    },
     productRemove = (id: number) => {
         let confirmation = confirm("Are you sure you want to delete this product?");
         
@@ -43,6 +46,10 @@
         <button class="button short butsmall" on:click={() => viewRemoved()}>
             <i class="fa fa-minus-circle"></i>
             View Removed
+        </button>
+        <button class="button short butsmall" on:click={() => viewLocations()}>
+            <i class="fa fa-map"></i>
+            View Locations
         </button>
     </div>
 

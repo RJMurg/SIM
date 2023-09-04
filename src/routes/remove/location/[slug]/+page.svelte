@@ -11,6 +11,10 @@
 
 <Title />
 
+<head>
+    <title>SIM - Remove Location</title>
+</head>
+
 <div class="exterior">
     <div class="interior">
         <div class="left">
