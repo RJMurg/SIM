@@ -1,6 +1,8 @@
 # SIM V1.0.2
 ## A Shop Inventory Managment system.
 
+(For a more feature-rich, though in-development version, consider [SIM v2.X.X Beta](https://github.com/RJMurg/SIM/tree/beta).
+
 SIM is a web app designed to help small businesses keep track of the expiration of products in the stockroom or on the floor.
 
 It is written in Node using LowDB for the database, ETA for serving content and Express for the web server.
