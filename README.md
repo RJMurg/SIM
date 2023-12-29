@@ -1,6 +1,6 @@
 # SIM v2.0.1
 
-**NOTE:** SIM v2 is in the `TESTING` phase, while believed to be stable, it cannot be guaranteed to be stable enough. Please use [SIM v1.0.2](https://github.com/RJMurg/SIM/tree/MVP) for production use.
+SIM v2.0.1 is `UNSTABLE`, please use v1.0.2
 
 SIM is a Shop Inventory Manager, a simple web tool to manage a shop's inventory. It is written in Svelte and uses a Postgres database.
 With SIM, you simply add the product to the inventory and when it is time to waste the product, it will be displayed.

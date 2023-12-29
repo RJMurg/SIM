@@ -62,7 +62,7 @@
                 Location Name
                 <span class="required">*</span>
             </label>
-            <input type="text" name="name" placeholder="Product Name" required/>
+            <input type="text" name="name" placeholder="Location Name" required/>
 
             <button class="button short">
                 <i class="fa fa-plus"></i>
