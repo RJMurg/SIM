@@ -21,7 +21,7 @@
         let confirmation = confirm("Are you sure you want to delete this product?");
         
         if(confirmation){
-            window.location.href = "/remove/" + id;
+            window.location.href = "/remove/product/" + id;
         }
     }
 </script>
