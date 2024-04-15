@@ -32,7 +32,6 @@ export const load = (async () => {
 
     for (let i = res.rows.length - 1; i >= 0; i--) {
         const productDate = new Date(res.rows[i].removal).setHours(0, 0, 0, 0);
-        console.log(res.rows[i].name + " " + productDate, " ", today)
         if (productDate > today) {
             res.rows.splice(i, 1);
         }
