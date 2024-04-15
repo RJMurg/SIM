@@ -1,0 +1,16 @@
+.vscode
+
+node_modules
+
+.git
+.gitattributes
+
+.eslintignore
+.eslintrc.cjs
+
+.prettierrc
+.prettierignore
+
+README.md
+
+Dockerfile

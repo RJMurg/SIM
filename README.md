@@ -1,31 +1,31 @@
-# SIM V1.0.2
-## A Shop Inventory Managment system.
+# SIM v2.0.1
 
-(For a more feature-rich, though in-development version, consider [SIM v2.X.X Beta](https://github.com/RJMurg/SIM/tree/beta).
+SIM is a Shop Inventory Manager, a simple web tool to manage a shop's inventory. It is written in Svelte and uses a Postgres database.
+With SIM, you simply add the product to the inventory and when it is time to waste the product, it will be displayed.
 
-SIM is a web app designed to help small businesses keep track of the expiration of products in the stockroom or on the floor.
+## Features
+- Simple Product management (add, edit, delete)
+- At-a-glance list of products to be wasted
+- Simple and clean UI
+- Lists of all products and all wasted products
 
-It is written in Node using LowDB for the database, ETA for serving content and Express for the web server.
+## Installation
+1. Clone the repository
+```bash
+    git clone https://github.com/RJMurg/SIM.git
+```
 
-### Features
-- Automatic listing of out-of-date products.
-- Removing out-of-date products.
-- Adding of products and information.
-- Viewing all products.
-- Viewing all removed products.
+2. Install dependencies
+```bash
+    npm install
+```
 
-### Requirements
-- Node.js
+3. Create a .env file in the root directory and add the following:
+```bash
+    DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<database>
+```
 
-### Setup
-1. Clone or download the repo.
-2. Open a command prompt in the directory, and run `npm install`
-3. Change the Port on line 11 of *index.js* if you wish, default is '3000'
-3. Run `npm start`
-4. Navigate to `localhost:[PORT]`
-
-## Usage
-When you want to add a product to the expiration database, press the 'Add New' button on the homepage and fill out the relevant details.
-When you have removed the item from the shelves, press the relevant removal button.
-To view all products, press the 'View All Products' button on the homepage.
-To view all removed products, press the 'View Removed Products' button on the homepage.
+4. Run the app
+```bash
+    npm run dev
+```
