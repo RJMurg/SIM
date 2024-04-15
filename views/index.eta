@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <link href="http://fonts.googleapis.com/css?family=IBM+Plex+Mono">
+</head>
+<body>
+    <h1 class="title">SIM</h1>
+    <h2 class="subtitle">A Shop Inventory Management System</h2>
+
+    <table>
+        <tr>
+            <td>
+                <form action="/add">
+                    <button class="add">
+                        <i class="fa fa-plus"></i>
+                        Add New
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form action="/view">
+                    <button class="add">
+                            <i class="fa fa-list"></i>
+                            View All Products
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form action="/removedlist">
+                    <button class="add">
+                            <i class="fa fa-minus-circle"></i>
+                            View Removed Products
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <div class="remove">
+        <div class="remint">
+            <h1 id="nood" class="hidden">Nothing is out of date today.</h1>
+            <div id="spekl" class="spekl">
+                <h1 class="title">Out of Date!</h1>
+                <h2 class="subtitle">Remove the following items from the shop floor:</h2>
+                <div id="data" class="spekl"><%~ it.data%></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        :root{
+            --black: #131515;
+            --superDarkGrey: #1B1D1C;
+            --veryDarkGrey: #222423;
+            --moderatelyDarkGrey: #313330;
+            --darkGrey: #62635d;
+            --lightGrey: #B0B1A4;
+            --white: #FFFFEC;
+            --red: #FF3633;
+            --orange: #FEA120;
+            --yellow: #FCFC73;
+            --green: #83D883;
+            --blue: #84B1C2;
+            --purple: #C185BD;
+        }
+
+        body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: "IBM Plex Sans", sans-serif;
+        }
+
+        .title{
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 3rem;
+            font-weight: 600;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            margin-bottom: 0rem;
+            color: var(--white);
+        }
+
+        .subtitle{
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 1.5rem;
+            font-weight: 200;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .hidden{
+            display: none !important;
+        }
+
+        div{
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background-color: var(--veryDarkGrey);
+        }
+
+        button{
+            padding: 0.5rem;
+            margin-top: 1rem;
+            margin-left: 0;
+            border-radius: 0.5rem;
+
+            color: var(--white);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+            cursor: pointer;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            padding = 0;
+            margin = 0;
+        }
+
+        .add{
+            align-self: center;
+            background-color: var(--moderatelyDarkGrey);
+        }
+
+        i{
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .add i{
+            color: var(--green);
+        }
+
+        input{
+            padding: 0;
+            margin: 0;
+            border-radius: 0.5rem;
+
+            color: var(--black);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+        }
+
+        .addProduct{
+            background-color: var(--moderatelyDarkGrey);
+            transition: 0.25s ease-in-out;
+        }
+
+        button:hover{
+            background-color: var(--darkGrey);
+            transition: 0.25s ease-in-out;
+        }
+
+        .addProduct i{
+            color: var(--green);
+        }
+
+        label{
+            color: var(--white);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        select{
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            margin-left: 0;
+            border-radius: 0.5rem;
+
+            color: var(--black);
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            border: none;
+        }
+
+        .reqd{
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .remove{
+            align-self: center;
+            background-color: var(--yellow);
+        }
+
+        .remint{
+            background-color: var(--moderatelyDarkGrey);
+            width: 95%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 0.5rem;
+            box-shadow: 0 0 0.5rem 0.125rem inset var(--black);
+        }
+
+        .remint h1{
+            text-shadow: 2.5px 2.5px 0 var(--black);
+        }
+
+        .removebutton{
+            align-self: center;
+            background-color: var(--red);
+        }
+
+        .warning{
+            color: var(--red);
+            font-weight: 600;
+            padding: 0px;
+        }
+
+        .spekl{
+            background-color: var(--moderatelyDarkGrey);
+        }
+
+        table{
+            align-self: center;
+        }
+    </style>
+
+    <script>
+        // This checks to see if the data is empty, and if it is, it hides the data div and shows the 'Nothing is out of date' message.
+        if(document.getElementById('data').innerText.length == 0){
+            document.getElementById('spekl').classList.add('hidden');
+            document.getElementById('nood').classList.add('title');
+            document.getElementById('nood').classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
