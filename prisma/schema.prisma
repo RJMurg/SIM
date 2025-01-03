@@ -12,3 +12,33 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Locations {
+  id       Int      @id @default(autoincrement())
+  name      String
+
+  Product Product[]
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  barcode     String
+  dateAdded   DateTime
+  expiryDate  DateTime
+  removalDate DateTime
+  locationId  Int
+
+  location    Locations @relation(fields: [locationId], references: [id])
+
+  removedProducts RemovedProducts[]
+}
+
+model RemovedProducts {
+  id          Int      @id @default(autoincrement())
+  name        String
+  productID   Int
+  dateRemoved DateTime
+
+  product     Product @relation(fields: [productID], references: [id])
+}
