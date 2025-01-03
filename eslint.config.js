@@ -33,7 +33,10 @@ export default ts.config(
 		},
 
 		rules: {
+			// This rule stops ESLint complaining about types not existing when they do lol
 			'no-undef': 'off',
+
+			// This rule stop ESLint throwing a wobbler with ShadCN Svelte
 			'@typescript-eslint/no-unused-vars': [
 				'warn',
 				{
