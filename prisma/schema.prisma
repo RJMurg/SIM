@@ -20,6 +20,13 @@ model Locations {
   Product Product[]
 }
 
+model Employees {
+  id        Int      @id @default(autoincrement())
+  name      String
+
+  RemovedProducts RemovedProducts[]
+}
+
 model Product {
   id          Int      @id @default(autoincrement())
   name        String
@@ -39,6 +46,8 @@ model RemovedProducts {
   name        String
   productID   Int
   dateRemoved DateTime
+  removedBy   Int
 
   product     Product @relation(fields: [productID], references: [id])
+  employee    Employees @relation(fields: [removedBy], references: [id])
 }
