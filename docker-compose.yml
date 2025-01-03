@@ -1,0 +1,28 @@
+services:
+  starboard:
+    build: .
+    container_name: sveltekit-prisma-template
+    environment:
+      DATABASE_URL: postgresql://prisma:prisma@db:5432/prismadb?schema=public
+    depends_on:
+      - db
+    networks:
+      - sk-prisma-template
+
+  sveltekit-prisma-template-db:
+    image: postgres:13
+    container_name: sveltekit-prisma-template-db
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: prismadb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - sk-prisma-template
+
+networks:
+  sk-prisma-template:
+
+volumes:
+  postgres-data:
