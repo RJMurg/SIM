@@ -8,6 +8,9 @@
 	export { className as class };
 </script>
 
-<div class={cn('dark flex flex-col space-y-1.5 text-center sm:text-left', className)} {...$$restProps}>
+<div
+	class={cn('dark flex flex-col space-y-1.5 text-center sm:text-left', className)}
+	{...$$restProps}
+>
 	<slot />
 </div>

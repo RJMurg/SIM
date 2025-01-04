@@ -11,7 +11,7 @@
 
 <LabelPrimitive.Root
 	class={cn(
-		'dark text-white text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+		'dark text-sm font-medium leading-none text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
 		className
 	)}
 	{...$$restProps}
