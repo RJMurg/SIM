@@ -8,6 +8,8 @@ on:
   push:
     branches: ['main', 'master']
     paths:
+      # We need to include everything then exclude the files we don't want to trigger the workflow
+      - '**'
       - '!docs/**'
       - '!LICENSE.md'
       - '!README.md'
@@ -16,7 +18,6 @@ on:
       - '!eslint.config.js'
       - '!.github/workflows/run-tests.yml'
       - '!.github/workflows/test-build.yml'
-      - '**'
 
 jobs:
   build:
