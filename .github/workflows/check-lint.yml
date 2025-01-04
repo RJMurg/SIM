@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  check-eslint:
     runs-on: ubuntu-latest
 
     permissions:

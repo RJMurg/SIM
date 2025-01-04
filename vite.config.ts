@@ -6,6 +6,9 @@ export default defineConfig({
 	plugins: [enhancedImages(), sveltekit()],
 
 	test: {
-		include: ['tests/**/*.{test,spec}.{js,ts}']
+		include: ['tests/**/*.{test,spec}.{js,ts}'],
+		coverage: {
+			reporter: ['json-summary']
+		}
 	}
 });
