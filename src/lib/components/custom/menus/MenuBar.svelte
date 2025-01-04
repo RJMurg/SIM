@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Button from '../ui/button/button.svelte';
+	import Button from '../../ui/button/button.svelte';
 
 	export let productsButtonVariant: buttonVariant = 'default';
 	export let locationsButtonVariant: buttonVariant = 'secondary';
