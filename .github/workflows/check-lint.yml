@@ -1,4 +1,4 @@
-name: 'Check - Run EsLint'
+name: 'Check - Run ESLint'
 
 on:
   pull_request:
