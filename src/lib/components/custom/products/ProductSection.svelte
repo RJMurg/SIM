@@ -24,6 +24,7 @@
 			</Dialog.Header>
 			<!-- Add expiry date, how many days early to remove it, barcode and product name -->
 			<!-- They should first be prompted to scan a barcode, then they can add the product name, expiry date and how many days early to remove it. -->
+			<!-- There should also be a way to add a product manually. -->
 			<div class="grid gap-4 py-4">
 				<div class="grid grid-cols-4 items-center gap-4">
 					<Label for="name" class="text-right">Name</Label>
