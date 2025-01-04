@@ -8,7 +8,8 @@ export default defineConfig({
 	test: {
 		include: ['tests/**/*.{test,spec}.{js,ts}'],
 		coverage: {
-			reporter: ['json-summary']
+			reporter: ['json-summary'],
+			reportOnFailure: true
 		}
 	}
 });
