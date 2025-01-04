@@ -42,7 +42,7 @@
 
 	<div class="flex h-full w-full flex-col items-center justify-center">
 		{#if products.length == 0}
-			<h1 class="text-4xl font-bold">Nothing is out of date today.</h1>
+			<h1 class="text-center text-4xl font-bold">Nothing is out of date today.</h1>
 		{/if}
 	</div>
 </div>

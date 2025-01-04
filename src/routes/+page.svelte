@@ -34,9 +34,9 @@
 	<Card class="h-full w-full p-4">
 		<div class="mb-2 flex h-1/6 w-full flex-col items-center justify-center">
 			<div class="mb-2 flex w-full flex-row items-center justify-center">
-				<img src="./sim.png" alt="SIM Logo" class="mr-4 h-auto w-12" />
+				<enhanced:img src="/static/sim.png" alt="SIM Logo" class="mr-4 h-auto w-12" />
 				<h1 class="text-4xl font-bold">SIM</h1>
-				<img src="./sim.png" alt="SIM Logo" class="ml-4 h-auto w-12" />
+				<enhanced:img src="/static/sim.png" alt="SIM Logo" class="ml-4 h-auto w-12" />
 			</div>
 
 			<MenuBar
