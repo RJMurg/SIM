@@ -29,16 +29,25 @@ model Employees {
 
 model Product {
   id          Int      @id @default(autoincrement())
-  name        String
-  barcode     String
   dateAdded   DateTime
   expiryDate  DateTime
   removalDate DateTime
   locationId  Int
+  stockId     Int
+
+  stock        Stock @relation(fields: [stockId], references: [id])
 
   location    Locations @relation(fields: [locationId], references: [id])
 
   removedProducts RemovedProducts[]
+}
+
+model Stock {
+  id          Int @id @default(autoincrement())
+  name        String
+  barcode     String
+
+  Product Product[]
 }
 
 model RemovedProducts {

@@ -9,9 +9,15 @@
 	let { data }: { data: PageData } = $props();
 
 	let page = $state('products');
-	let productsButtonVariant: buttonVariant = $derived(page === 'products' ? 'default' : 'secondary');
-	let locationsButtonVariant: buttonVariant = $derived(page === 'locations' ? 'default' : 'secondary');
-	let employeesButtonVariant: buttonVariant = $derived(page === 'employees' ? 'default' : 'secondary');
+	let productsButtonVariant: buttonVariant = $derived(
+		page === 'products' ? 'default' : 'secondary'
+	);
+	let locationsButtonVariant: buttonVariant = $derived(
+		page === 'locations' ? 'default' : 'secondary'
+	);
+	let employeesButtonVariant: buttonVariant = $derived(
+		page === 'employees' ? 'default' : 'secondary'
+	);
 </script>
 
 <div class="h-screen w-screen p-4">
