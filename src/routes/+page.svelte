@@ -9,25 +9,9 @@
 	let { data }: { data: PageData } = $props();
 
 	let page = $state('products');
-	let productsButtonVariant: buttonVariant = $state('default');
-	let locationsButtonVariant: buttonVariant = $state('secondary');
-	let employeesButtonVariant: buttonVariant = $state('secondary');
-
-	$effect(() => {
-		if (page === 'products') {
-			productsButtonVariant = 'default';
-			locationsButtonVariant = 'secondary';
-			employeesButtonVariant = 'secondary';
-		} else if (page === 'locations') {
-			productsButtonVariant = 'secondary';
-			locationsButtonVariant = 'default';
-			employeesButtonVariant = 'secondary';
-		} else if (page === 'employees') {
-			productsButtonVariant = 'secondary';
-			locationsButtonVariant = 'secondary';
-			employeesButtonVariant = 'default';
-		}
-	});
+	let productsButtonVariant: buttonVariant = $derived(page === 'products' ? 'default' : 'secondary');
+	let locationsButtonVariant: buttonVariant = $derived(page === 'locations' ? 'default' : 'secondary');
+	let employeesButtonVariant: buttonVariant = $derived(page === 'employees' ? 'default' : 'secondary');
 </script>
 
 <div class="h-screen w-screen p-4">
